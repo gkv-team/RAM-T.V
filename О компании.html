@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>О компании — РАМ-Т.В.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MERIDIAN LINE — Prototype Design System
+   colors_and_type.css
+
+   A monochrome, low-fidelity "wireframe prototype" kit used to
+   pitch corporate logistics websites. Grayscale surfaces, blue-grey
+   strokes, black pill buttons, Inter throughout.
+
+   Load Inter (Google Fonts) before this file:
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+   ============================================================ */
+
+:root {
+  /* ---------- Base palette ---------- */
+  --ml-white:        #ffffff;
+  --ml-black:        #000000;
+  --ml-ink:          #060606;   /* near-black body text */
+  --ml-ink-900:      #141414;   /* footer bg, strong headings */
+  --ml-ink-800:      #1b1b1b;   /* dark surfaces / strong text */
+  --ml-ink-700:      #2a2a2a;
+
+  /* Wireframe / placeholder grays (the defining motif) */
+  --ml-wire:         #585858;   /* image + media placeholder fill (most used color) */
+  --ml-wire-2:       #c4c4c4;   /* logo / faint marks */
+
+  /* Surfaces */
+  --ml-surface-1:    #f4f5f6;   /* primary card / panel */
+  --ml-surface-2:    #f0f0f0;   /* alternate form panel */
+  --ml-surface-3:    #fafbfc;   /* hover lift */
+
+  /* Text */
+  --ml-text:         #060606;   /* primary */
+  --ml-text-2:       #616161;   /* secondary body */
+  --ml-text-slate:   #657981;   /* slate body inside cards */
+  --ml-text-slate-2: #576b7e;   /* deeper slate */
+  --ml-text-muted:   #92a4b7;   /* muted blue-grey captions */
+  --ml-text-nav:     #79828d;   /* nav + breadcrumb */
+  --ml-text-faint:   #a6b2b7;   /* input placeholders */
+
+  /* Blue-grey strokes (only chroma in the system) */
+  --ml-border:       #d0e0e5;   /* default hairline */
+  --ml-border-2:     #c3d2e0;   /* card stroke */
+  --ml-border-input: #c9d1d3;   /* input outline */
+  --ml-border-badge: #c1d1d7;   /* date / tag chips */
+
+  /* Steppe (requisites block) — substitute below */
+  --ml-steppe-head:  #262a31;
+  --ml-steppe-label: #9da6b7;
+
+  /* ---------- Radii ---------- */
+  --ml-r-pill:    50px;  /* buttons, inputs */
+  --ml-r-card-lg: 30px;  /* hero panel, large sections */
+  --ml-r-card:    20px;  /* standard cards */
+  --ml-r-sm:      10px;  /* small media tiles */
+  --ml-r-badge:    5px;  /* chips / date tags */
+
+  /* ---------- Spacing (8pt base, page gutter 160) ---------- */
+  --ml-gutter:   160px;  /* page side margin @1920 */
+  --ml-maxw:    1600px;  /* content column width */
+  --ml-s-1:  8px;
+  --ml-s-2: 16px;
+  --ml-s-3: 24px;
+  --ml-s-4: 32px;
+  --ml-s-5: 40px;
+  --ml-s-6: 60px;
+  --ml-s-7: 80px;
+
+  /* ---------- Shadow (used sparingly — wireframes are flat) ---------- */
+  --ml-shadow-card: 0 1px 2px rgba(20,20,20,0.04);
+  --ml-shadow-hover: 0 8px 24px rgba(29,36,49,0.08);
+
+  /* ---------- Type families ---------- */
+  --ml-font: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Steppe (Cyrillic) & PF BeauSans Pro are not on Google Fonts —
+     substituted with Inter. See README "Typography / substitutions". */
+  --ml-font-steppe: "Inter", sans-serif;
+}
+
+/* ============================================================
+   BASE TYPE STYLES
+   Inter, with a tight scale. Headings use Medium (500); body Regular.
+   ============================================================ */
+
+.ml-display {            /* hero slogan */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--ml-black);
+}
+
+.ml-h1 {                 /* big section / form heading */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 52px;
+  letter-spacing: -0.01em;
+  color: var(--ml-black);
+}
+
+.ml-h2 {                 /* section heading ("Наши преимущества") */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.15;
+  color: var(--ml-ink-900);
+}
+
+.ml-h3 {                 /* sub-section */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ml-ink-900);
+}
+
+.ml-h4 {                 /* card title */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--ml-ink-900);
+}
+
+.ml-body-lg {            /* lead paragraph */
+  font-family: var(--ml-font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--ml-text-slate);
+}
+
+.ml-body {               /* default body */
+  font-family: var(--ml-font);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--ml-text-2);
+}
+
+.ml-body-hero {          /* hero supporting copy (light weight) */
+  font-family: var(--ml-font);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--ml-black);
+}
+
+.ml-small {              /* captions, meta */
+  font-family: var(--ml-font);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--ml-text-muted);
+}
+
+.ml-nav {                /* nav links + breadcrumbs */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ml-text-nav);
+}
+
+.ml-stat-num {           /* big statistics */
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 1.0;
+  color: var(--ml-black);
+}
+
+/* ============================================================
+   ELEMENTS
+   ============================================================ */
+
+/* Primary pill button (black) */
+.ml-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 40px;
+  border-radius: var(--ml-r-pill);
+  background: var(--ml-black);
+  color: var(--ml-white);
+  font-family: var(--ml-font);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition: background .18s ease, transform .12s ease;
+}
+.ml-btn:hover { background: var(--ml-ink-700); }
+.ml-btn:active { transform: scale(.98); }
+
+/* Small pill button ("Подробнее") */
+.ml-btn-sm {
+  padding: 10px 22px;
+  font-size: 14px;
+}
+
+/* Ghost / outline pill (e.g. "Смотреть все") */
+.ml-btn-ghost {
+  background: transparent;
+  color: var(--ml-ink-900);
+  border: 1px solid var(--ml-border-2);
+}
+.ml-btn-ghost:hover { background: var(--ml-surface-1); }
+
+/* Chip / date tag */
+.ml-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--ml-r-badge);
+  border: 1px solid var(--ml-border-badge);
+  font-family: var(--ml-font);
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--ml-text-slate-2);
+  background: var(--ml-white);
+}
+
+/* Card */
+.ml-card {
+  background: var(--ml-surface-1);
+  border-radius: var(--ml-r-card);
+  border: 1px solid var(--ml-border);
+  padding: 28px;
+}
+
+/* Pill input */
+.ml-input {
+  width: 100%;
+  height: 61px;
+  padding: 0 22px;
+  border-radius: var(--ml-r-pill);
+  border: 1px solid var(--ml-border-input);
+  background: var(--ml-white);
+  font-family: var(--ml-font);
+  font-size: 14px;
+  color: var(--ml-text);
+}
+.ml-input::placeholder { color: var(--ml-text-faint); }
+.ml-input:focus { outline: none; border-color: var(--ml-text-nav); }
+
+/* Wireframe media placeholder (the signature motif) — gray box with X */
+.ml-placeholder {
+  position: relative;
+  background: var(--ml-surface-1);
+  border: 1px solid var(--ml-border);
+  border-radius: var(--ml-r-sm);
+  overflow: hidden;
+}
+.ml-placeholder::before,
+.ml-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top right,
+      transparent calc(50% - 0.7px),
+      var(--ml-border-2) calc(50% - 0.7px),
+      var(--ml-border-2) calc(50% + 0.7px),
+      transparent calc(50% + 0.7px));
+}
+.ml-placeholder::after {
+  background:
+    linear-gradient(to bottom right,
+      transparent calc(50% - 0.7px),
+      var(--ml-border-2) calc(50% - 0.7px),
+      var(--ml-border-2) calc(50% + 0.7px),
+      transparent calc(50% + 0.7px));
+}
+
+</style>
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;background:#fff;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased;color:#141414;}
+  a{text-decoration:none;}
+  button{font-family:Inter,sans-serif;}
+  ::selection{background:#141414;color:#fff;}
+  :root{ --rt-gap:116px; }
+  @keyframes ramFade{from{opacity:0}to{opacity:1}}
+  @keyframes ramRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  ::-webkit-scrollbar{width:11px;height:11px;}
+  ::-webkit-scrollbar-thumb{background:#d8dde0;border-radius:8px;border:3px solid #fff;}
+</style>
+<script src="lib/react.js"></script>
+<script src="lib/react-dom.js"></script>
+<script src="lib/babel.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#141414">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#141414"/>
+    <rect x="495" y="300" width="120" height="120" rx="28" fill="#ffffff"/>
+    <path d="M540 388 l10 10 18 -18" fill="none" stroke="#141414" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="640" y="395" font-family="Inter, sans-serif" font-size="76" font-weight="600" fill="#ffffff" letter-spacing="3">РАМ-Т.В.</text>
+    <text x="497" y="470" font-family="Inter, sans-serif" font-size="22" font-weight="500" fill="#9aa0a8" letter-spacing="6">НЕГОСУДАРСТВЕННАЯ ЭКСПЕРТИЗА</text>
+  </svg>
+</template>
+<div id="root"></div>
+<script type="text/babel">
+// Shared atoms for the РАМ-ТВ expertise website.
+// Black-and-white wireframe language from the Meridian Line design system.
+// Exposed on window for sibling Babel scripts.
+
+/* ---------- Thin-stroke monochrome icon set (Lucide-style, 1.6px) ---------- */
+const ICONS = {
+  doc: "M7 3h7l5 5v13a0 0 0 0 1 0 0H7a0 0 0 0 1 0 0V3z M14 3v5h5",
+  docCheck: "M7 3h7l5 5v13H7V3z M14 3v5h5 M9.5 14.5l2 2 4-4",
+  survey: "M3 20h18 M6 20V9 M12 20V5 M18 20v-8 M3 20l4-4 M9 12l3-3 4 4",
+  estimate: "M6 3h12v18H6z M9 7h6 M9 11h6 M9 15h3",
+  support: "M4 12a8 8 0 0 1 16 0 M4 12v3a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2z M20 12v3a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2z",
+  shield: "M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z M9 12l2 2 4-4",
+  clock: "M12 4a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M12 8v4l3 2",
+  users: "M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M3 20a6 6 0 0 1 12 0 M16.5 4.5a3.5 3.5 0 0 1 0 6.8 M21 20a6 6 0 0 0-4-5.6",
+  building: "M5 21V5l8-2v18 M13 21V9l6 2v10 M3 21h18 M8 7v0 M8 11v0 M8 15v0 M16 13v0 M16 17v0",
+  pin: "M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z M12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
+  phone: "M5 4h3l2 5-2 1.5a11 11 0 0 0 5 5L19 14l-1.5 2 1.5 0 M5 4a14 14 0 0 0 14 14",
+  mail: "M3 6h18v12H3z M3 7l9 6 9-6",
+  telegram: "M21 5L3 12l5 2 2 5 3-3 4 3 4-14z M8 14l9-7",
+  chat: "M4 5h16v11H9l-4 4V5z",
+  upload: "M12 16V5 M8 9l4-4 4 4 M5 19h14",
+  arrowR: "M5 12h14 M13 6l6 6-6 6",
+  arrowL: "M19 12H5 M11 6l-6 6 6 6",
+  chevron: "M9 6l6 6-6 6",
+  plus: "M12 5v14 M5 12h14",
+  minus: "M5 12h14",
+  star: "M12 2.6l2.7 5.95 6.5.62-4.9 4.32 1.45 6.36L12 16.96l-5.75 3.49 1.45-6.36-4.9-4.32 6.5-.62z",
+  play: "M8 5l11 7-11 7z",
+  pdf: "M7 3h7l5 5v13H7V3z M14 3v5h5 M9 13h1.5a1.5 1.5 0 0 1 0 3H9v-3z M9 16v2 M14 13v5 M14 13h2 M14 15.5h1.8",
+  external: "M14 4h6v6 M20 4l-9 9 M19 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6",
+  scales: "M12 4v16 M7 20h10 M5 8h14 M5 8l-2.5 5a3 3 0 0 0 5 0L5 8z M19 8l-2.5 5a3 3 0 0 0 5 0L19 8z M9 4h6",
+  search: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14z M16 16l4 4",
+  xml: "M8 8l-3 4 3 4 M16 8l3 4-3 4 M13 6l-2 12",
+  check: "M5 12l4 4 10-10",
+  layers: "M12 3l9 5-9 5-9-5 9-5z M3 13l9 5 9-5 M3 17l9 5 9-5",
+  handshake: "M8 11l3-3 2 2 3-3 4 4-5 5-3-3-2 2-3-3z M3 9l4-1 M21 9l-4-1",
+  award: "M12 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10z M9 13l-1.5 7L12 18l4.5 2L15 13 M12 6v2 M11 8h2",
+  flow: "M5 6h6v4H5z M13 14h6v4h-6z M8 10v4h5",
+  globe: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M3 12h18 M12 3c2.5 2.4 2.5 15.6 0 18 M12 3c-2.5 2.4-2.5 15.6 0 18",
+  x: "M6 6l12 12 M18 6L6 18",
+};
+
+function Icon({ name, size = 24, stroke = 1.6, color = "currentColor", style }) {
+  const d = ICONS[name] || ICONS.doc;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
+      stroke={color} strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round"
+      style={{ flex: "none", display: "block", ...style }}>
+      {d.split(" M").map((seg, i) => (
+        <path key={i} d={(i === 0 ? seg : "M" + seg)} />
+      ))}
+    </svg>
+  );
+}
+
+const LOGO_DATA_URI = "data:image/svg+xml,%3Csvg%20width%3D%22184%22%20height%3D%22181%22%20viewBox%3D%220%200%20184%20181%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url(%23clip0_58_5845)%22%3E%3Cpath%20d%3D%22M0%200H102.2H134.12H183.828V26.047V30.6936V181H100.553H70.8767H0V116.197V94.316V0Z%22%20fill%3D%22white%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M0%2094.3164C0.677414%2094.4661%201.47435%2094.6164%202.11378%2094.8587C2.86148%20100.178%204.28387%20108.216%206.03905%20113.353C9.82247%20124.424%2016.5326%20136.806%2025.3207%20144.673L25.9404%20143.939C25.1813%20142.805%2023.3115%20140.516%2022.8643%20139.349C20.5357%20133.276%2019.0669%20126.804%2016.8417%20120.664C16.5445%20119.844%2016.6329%20118.132%2017.3884%20117.574C17.8525%20117.521%2018.3323%20117.416%2018.731%20117.715C20.6932%20119.187%2025.4674%20131.161%2027.3082%20134.068C28.8854%20136.559%2032.7166%20140.234%2034.8243%20142.532C36.4236%20144.276%2037.8757%20146.179%2039.5662%20147.835C40.5778%20148.823%2041.6638%20149.73%2042.8146%20150.551C44.3332%20151.613%2046.1299%20152.701%2047.7041%20153.732C49.7052%20155.042%2052.2012%20156.977%2054.2609%20158.024C58.3702%20160.113%2063.2738%20161.817%2067.6224%20163.367C69.8372%20164.156%2073.4749%20165.516%2075.6576%20165.953C78.8015%20166.582%2082.4803%20166.898%2085.7323%20167.367C89.2537%20167.875%2094.0237%20168.932%2097.4298%20168.836C100.402%20168.753%20104.749%20167.858%20107.811%20167.384C110.434%20166.979%20113.862%20166.678%20116.346%20166.175C121.599%20165.113%20127.567%20162.033%20132.561%20159.924C133.778%20159.41%20138.348%20157.652%20139.296%20157C143.27%20154.263%20147.992%20151.18%20151.646%20148.039C152.278%20147.496%20153.609%20145.154%20154.208%20144.361C155.861%20142.175%20157.726%20139.618%20160.566%20139.106C161.347%20139.337%20162.175%20139.6%20162.955%20139.813C163.271%20141.215%20163.31%20141.644%20162.548%20142.903C161.636%20144.411%20159.986%20145.713%20159.046%20147.116C157.021%20150.105%20154.625%20152.657%20152.04%20155.168C150.068%20157.085%20147.659%20159.89%20145.38%20161.397C141.159%20164.186%20136.713%20167.021%20132.39%20169.677C130.647%20170.748%20129.015%20171.855%20127.248%20172.853C123.996%20174.414%20120.319%20175.201%20116.959%20176.503C112.299%20178.211%20108.012%20180.154%20102.992%20180.431C102.362%20180.467%20101.037%20180.61%20100.553%20181H70.8767H0V116.198V94.3164Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M0%20116.198C1.78068%20118.159%203.36209%20129.784%205.18341%20133.094C7.3422%20137.344%2010.2276%20141.249%2012.9605%20145.177C14.0289%20146.712%2015.5364%20149.788%2016.7147%20151.046C22.6474%20157.38%2030.3693%20162.498%2037.1999%20167.863C38.8365%20169.148%2041.8994%20170.003%2043.7175%20171.158C48.2743%20173.629%2052.9013%20176.152%2057.6469%20178.223C60.2104%20179.342%2069.0927%20179.648%2070.8767%20181H0V116.198Z%22%20fill%3D%22white%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M25.94%20143.938C26.6835%20144.902%2027.2848%20145.934%2027.9183%20146.972C26.7881%20146.113%2026.3089%20145.69%2025.3203%20144.672L25.94%20143.938Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M156.842%20134.29C157.706%20133.48%20162.101%20129.44%20162.401%20134.059C162.43%20134.5%20160.034%20136.144%20159.452%20136.749C154.302%20142.102%20148.764%20146.911%20143.032%20151.622C138.654%20155.058%20130.891%20156.657%20125.777%20158.833C118.816%20161.793%20111.868%20162.415%20104.472%20163.398C102.125%20163.689%2098.4696%20164.486%2096.1552%20164.494C92.8445%20164.506%2088.7121%20163.085%2085.3295%20162.864C83.1057%20162.446%2080.5112%20162.228%2078.3776%20161.496C72.9347%20159.719%2067.5607%20157.452%2062.238%20155.394C57.1949%20153.444%2054.9952%20152.346%2050.9078%20148.771C47.1058%20145.445%2042.536%20142.34%2038.7181%20138.976C37.6655%20138.049%2036.355%20135.63%2035.3309%20134.497C31.1285%20128.418%2026.4506%20122.563%2022.6345%20116.249C21.0138%20113.415%2020.0609%20108.132%2018.8326%20104.929C17.2098%20100.698%2015.6793%2096.1371%2014.485%2091.7915C14.1397%2088.5613%2014.3055%2084.5862%2014.3071%2081.3761C14.312%2071.9878%2013.7777%2063.0148%2016.2516%2053.8266C16.9587%2051.2003%2017.1339%2047.8315%2018.1124%2045.2259C19.8654%2040.5577%2021.5943%2035.6934%2023.9121%2031.2773C25.5277%2028.3024%2028.2452%2025.5786%2030.149%2022.7982C33.2048%2018.425%2036.4384%2013.6686%2040.4259%2010.0725C42.1627%208.50632%2046.4069%202.81155%2048.6828%203.19742C49.238%203.4503%2049.39%204.04833%2049.6429%204.63619C48.0037%208.70628%2042.8447%2014.0651%2040.477%2018.0289C37.6399%2022.7789%2034.8384%2027.817%2032.2514%2032.7297C31.1304%2034.8585%2030.5077%2038.0644%2029.763%2040.4018C28.7769%2043.4969%2027.6605%2046.6836%2026.8725%2049.8248L26.8963%2049.9885C27.0641%2051.2039%2026.5789%2051.554%2026.9437%2052.0928C27.1792%2051.8331%2027.0484%2051.8814%2027.3253%2051.8055C30.216%2045.0398%2033.24%2039.5822%2037.3562%2033.4616C39.4014%2030.4202%2042.0793%2028.0799%2044.6096%2025.4536C45.3974%2024.5985%2046.721%2023.8433%2047.9233%2023.9773C48.2418%2024.1822%2048.5949%2024.3973%2048.6533%2024.8164C48.9538%2026.9794%2046.1053%2029.5772%2045.0181%2031.2794C43.4835%2033.6822%2042.1652%2035.649%2040.8745%2038.1551C38.8833%2042.0975%2036.2237%2047.5863%2035.0005%2051.7469C34.2852%2055.0167%2033.6356%2058.332%2033.0327%2061.6285C32.5213%2064.425%2031.5147%2067.9156%2031.495%2070.7132C31.4519%2076.8534%2032.1418%2083.4224%2032.8819%2089.5057C33.2478%2092.5118%2035.494%2095.9418%2036.5125%2098.7768C38.5238%20104.127%2040.6377%20109.922%2043.419%20114.926C44.9993%20117.376%2046.9865%20119.604%2048.908%20121.828C51.7531%20125.12%2054.2107%20128.825%2057.1955%20131.999C60.7071%20135.734%2067.0186%20138.447%2071.2085%20141.58C73.2463%20143.103%2075.7838%20144.454%2077.9525%20145.769C79.1923%20146.384%2083.893%20147.453%2085.578%20147.822C88.8061%20148.527%2092.9203%20150.107%2096.096%20150.581C103.098%20151.626%20113.131%20152.843%20120.124%20152.29C121.228%20152.202%20129.269%20148.899%20131.017%20148.254C133.61%20147.298%20138.937%20146.06%20140.977%20144.94C143.76%20143.412%20146.696%20140.708%20149.862%20139.013C150.117%20138.964%20156.658%20134.565%20156.842%20134.29Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M26.8743%2049.8247L26.8982%2049.9884C27.0659%2051.2038%2026.5807%2051.5539%2026.9455%2052.0927C27.181%2051.833%2027.0502%2051.8813%2027.3271%2051.8055C27.2715%2052.2134%2026.6871%2053.8041%2026.3818%2054.0466L26.4158%2054.302L26.3345%2054.2262C26.2565%2052.2539%2026.4297%2051.7496%2026.8743%2049.8247Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M165.592%2033.0404C167.813%2031.3511%20169.306%2029.6217%20171.2%2027.6014C174.372%2024.217%20179.726%2025.3725%20183.827%2026.047V30.6936C182.756%2031.626%20178.132%2039.3275%20177.264%2040.9523C173.523%2047.9492%20172.513%2056.1716%20172.102%2063.9764C171.7%2075.7057%20174.096%2087.2937%20172.729%2099.1734C172.352%20102.448%20172.769%20106.052%20172.01%20109.317C171.766%20110.763%20170.17%20113.366%20169.607%20114.765C166.244%20123.123%20165.108%20125.06%20158.652%20131.146C157.989%20132.539%20156.188%20133.269%20156.46%20134.174L156.841%20134.289C156.657%20134.565%20150.116%20138.963%20149.861%20139.013L149.28%20138.728C147.626%20139.81%20144.282%20140.627%20142.415%20141.497C137.07%20143.985%20131.789%20145.848%20126.013%20147.083C123.602%20147.598%20121.187%20148.51%20118.654%20148.694C114.804%20148.972%20110.927%20148.78%20107.068%20148.85C103.332%20148.888%2099.5888%20149.172%2095.8967%20148.701C95.7866%20147.8%2095.7917%20147.044%2095.7852%20146.143C101.242%20144.606%20107.348%20142.495%20112.519%20140.138C114.641%20139.17%20116.8%20137.675%20118.885%20136.577C121.235%20135.34%20123.559%20134.283%20125.836%20132.899C129.447%20130.705%20132.163%20127.589%20135.193%20124.663C136.208%20123.683%20139.094%20121.204%20139.765%20120.195C142.861%20115.541%20146.841%20108.089%20148.924%20103.04C149.649%20101.283%20150.405%2094.0125%20150.972%2091.5994C150.899%2090.8377%20150.809%2089.9218%20150.443%2089.2549C151.401%2087.4335%20150.72%2081.1756%20151.804%2077.1613C149.238%2076.7035%20147.956%2076.8747%20147.317%2079.603L146.939%2079.3859C146.161%2080.1976%20145.923%2081.1092%20145.4%2082.1503C144.827%2083.3211%20143.838%2085.0203%20143.382%2086.076C142.437%2088.4296%20140.647%2091.1018%20139.629%2093.5649C138.823%2095.5163%20136.179%2096.5152%20134.446%2097.5441C132.592%2098.6444%20133.976%2098.6045%20133.613%2099.9093C129.458%20103.379%20122.936%20106.067%20117.45%20104.9C115.739%20104.536%20111.203%20100.98%20110.065%2099.6203C110.33%2098.9221%20110.717%2098.0855%20111.016%2097.3854C112.62%2098.2343%20117.193%2099.4923%20119.207%2099.3606C126.585%2098.8783%20133.075%2090.6383%20138.609%2086.1872C139.258%2085.6651%20142.285%2080.8085%20143.28%2079.5848C140.93%2081.5657%20137.592%2084.1869%20134.634%2085.1168C127.728%2087.2884%20126.04%2085.6912%20120.176%2082.9078C119.254%2081.7255%20116.011%2075.6173%20116.051%2073.9535C116.065%2073.3537%20116.257%2073.1639%20116.633%2072.7959C118.738%2072.1215%20122.733%2077.4844%20123.961%2079.0331C125.416%2079.55%20126.969%2079.769%20128.513%2080.2871C131.35%2079.7073%20134.349%2078.5739%20136.592%2076.7003C138.541%2075.0722%20139.873%2072.8758%20141.15%2070.7144C143.744%2066.3237%20145.685%2061.7443%20147.496%2056.9861C149.924%2050.6098%20152.215%2042.4655%20156.883%2037.2911C159.762%2034.0985%20161.318%2033.2474%20165.592%2033.0404Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M146.939%2079.3862C146.925%2078.3823%20146.522%2077.7199%20146.373%2076.7883C146.257%2076.0627%20151.552%2070.3548%20152.368%2069.2246C152.082%2071.2285%20152.176%2075.0002%20152.252%2077.0728L151.804%2077.1616C149.239%2076.7038%20147.957%2076.875%20147.318%2079.6033L146.939%2079.3862Z%22%20fill%3D%22white%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M152.254%2077.0728C153.484%2080.0469%20151.464%2088.5069%20150.974%2091.5996C150.902%2090.8379%20150.811%2089.922%20150.445%2089.2551C151.403%2087.4338%20150.722%2081.1758%20151.806%2077.1615L152.254%2077.0728Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M149.281%20138.728C149.963%20138.267%20150.666%20138.061%20151.268%20137.647C154.064%20135.724%20156.201%20133.37%20158.653%20131.146C157.99%20132.539%20156.189%20133.269%20156.462%20134.174L156.842%20134.289C156.658%20134.565%20150.117%20138.963%20149.862%20139.012L149.281%20138.728Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M162.454%2041.7754C162.856%2042.0059%20162.909%2042.084%20163.208%2042.4427C163.231%2043.4997%20161.867%2044.4476%20160.949%2045.4664L160.813%2045.633L160.629%2045.5501C160.735%2044.8158%20162.032%2042.5598%20162.454%2041.7754Z%22%20fill%3D%22white%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M102.202%200H134.122C136.664%202.05605%20149.55%203.18205%20147.511%206.7775C145.77%208.37217%20136.978%205.4869%20134.252%205.44188C129.733%205.36722%20125.347%205.62685%20120.83%205.8445C117.23%205.72488%20113.811%207.29642%20110.495%207.92718C103.973%209.16777%20100.561%2010.98%2094.819%2013.9457C85.4908%2018.7635%2078.3592%2024.3215%2071.4253%2032.186C75.4768%2030.5772%2076.8765%2028.6153%2080.4241%2026.345C83.1224%2024.5628%2086.3472%2023.7022%2089.2653%2022.5803C94.5334%2020.2655%2099.2755%2020.0139%20104.78%2019.4285C112.054%2018.6552%20117.578%2020.2289%20124.655%2021.4276C126.85%2021.7995%20126.392%2023.4047%20125.895%2024.8829C121.799%2025.5203%20113.927%2024.8331%20109.335%2025.1998C96.7607%2026.2043%2086.4234%2033.3853%2077.0231%2041.2514C75.6774%2042.4231%2073.9699%2043.466%2072.6764%2044.6671C70.0562%2047.1005%2068.2785%2050.4852%2066.3591%2053.491C65.377%2055.4829%2063.2031%2057.9469%2062.5591%2060.0552C60.6021%2066.4634%2057.8661%2073.4581%2056.8661%2080.0474C56.5204%2082.326%2056.923%2085.3164%2056.8131%2087.794C56.6876%2090.62%2056.6964%2094.2476%2057.0404%2097.0887C59.7224%20103.849%2062.7193%20111.387%2066.3122%20117.72C67.5957%20119.982%2069.504%20121.931%2070.9272%20123.997C72.906%20127.018%2075.2039%20129.293%2077.6748%20131.843C81.2886%20135.572%2088.4612%20139.503%2091.736%20143.195C92.0655%20144.031%2091.9018%20145.091%2091.1847%20145.66C89.6473%20146.021%2079.2393%20140.54%2077.2182%20139.412C71.6374%20136.419%2067.7968%20131.784%2063.3333%20127.778C56.6507%20121.78%2054.2462%20115.357%2049.5383%20107.992C47.3147%20104.513%2046.6589%20100.725%2045.3159%2096.9695C42.6226%2089.4391%2042.0839%2084.8319%2042.2953%2076.984L42.4975%2067.6122C42.5825%2064.743%2042.5751%2059.1501%2043.2378%2056.5418C43.9923%2053.5718%2046.3163%2049.3319%2047.5392%2046.3296C49.5713%2041.3403%2051.6541%2035.7063%2054.4%2031.0795C55.1638%2029.7927%2057.6868%2027.4438%2058.8762%2026.2653L65.196%2020.01C67.7982%2017.4303%2071.23%2013.4808%2074.1265%2011.3933C76.6409%209.78968%2079.7278%208.59091%2082.3698%207.27949C87.5253%204.72033%2091.9388%201.80304%2097.7992%201.22327C98.744%201.1298%20101.395%200.527992%20102.202%200Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M147.317%2079.6032C147.956%2076.8749%20149.238%2076.7036%20151.804%2077.1614C150.72%2081.1758%20151.401%2087.4337%20150.443%2089.255C150.083%2090.1844%20149.997%2091.2577%20149.8%2092.2343C149.531%2093.5743%20149.009%2094.8127%20148.376%2096.0185C147.257%2098.1514%20142.626%20106.322%20140.628%20106.898C140.113%20107.046%20139.773%20106.937%20139.323%20106.687C137.856%20104.429%20143.079%2098.6057%20142.848%2095.1823C142.745%2093.6484%20143.65%2088.5522%20143.923%2086.9298L143.382%2086.0762C143.838%2085.0204%20144.827%2083.3213%20145.4%2082.1504C145.923%2081.1093%20146.161%2080.1978%20146.939%2079.3861L147.317%2079.6032Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M145.401%2082.1504L146.062%2082.8397C145.407%2084.1737%20144.71%2085.6868%20143.923%2086.9297L143.383%2086.0762C143.838%2085.0204%20144.827%2083.3212%20145.401%2082.1504Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M146.941%2079.3862L147.319%2079.6033C147.01%2080.9205%20146.742%2081.6243%20146.064%2082.8399L145.402%2082.1505C145.925%2081.1094%20146.163%2080.1979%20146.941%2079.3862Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M160.566%20139.105C161.525%20138.575%20162.08%20138.196%20162.967%20137.568L162.955%20139.812C162.175%20139.6%20161.347%20139.337%20160.566%20139.105Z%22%20fill%3D%22%23303030%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22clip0_58_5845%22%3E%3Crect%20width%3D%22183.828%22%20height%3D%22181%22%20fill%3D%22white%22%3E%3C%2Frect%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E";
+
+/* ---------- Logo: uploaded symbol + РАМ-ТВ wordmark ---------- */
+function Logo({ light = false, compact = false }) {
+  const ink = light ? "#ffffff" : "#141414";
+  const sub = light ? "#9aa0a8" : "var(--ml-text-nav)";
+  return (
+    <a href={RT.HOME} style={{ display: "flex", alignItems: "center", gap: 13, textDecoration: "none" }}>
+      <span style={{
+        width: 46, height: 46, borderRadius: 12, background: "#fff",
+        border: light ? "none" : "1px solid var(--ml-border-2)",
+        display: "grid", placeItems: "center", flex: "none", overflow: "hidden",
+      }}>
+        <img src={LOGO_DATA_URI} alt="РАМ-Т.В." style={{ width: 32, height: 32, objectFit: "contain" }} />
+      </span>
+      <span style={{ display: "grid", gap: 3 }}>
+        <span style={{ font: "600 20px/1 Inter", letterSpacing: "0.04em", color: ink }}>РАМ-Т.В.</span>
+        {!compact && (
+          <span style={{ font: "500 9.5px/1 Inter", letterSpacing: "0.16em", color: sub, textTransform: "uppercase" }}>
+            Негосударственная экспертиза
+          </span>
+        )}
+      </span>
+    </a>
+  );
+}
+
+/* ---------- Wireframe media placeholder (signature motif: rect + cross only) ---------- */
+function Placeholder({ style, radius = 10 }) {
+  return (
+    <div style={{
+      position: "relative", background: "var(--ml-surface-1)",
+      border: "1px solid var(--ml-border)", borderRadius: radius, overflow: "hidden", ...style,
+    }}>
+      <div style={{ position: "absolute", inset: 0, background:
+        "linear-gradient(to top right, transparent calc(50% - .6px), var(--ml-border-2) calc(50% - .6px), var(--ml-border-2) calc(50% + .6px), transparent calc(50% + .6px))" }} />
+      <div style={{ position: "absolute", inset: 0, background:
+        "linear-gradient(to bottom right, transparent calc(50% - .6px), var(--ml-border-2) calc(50% - .6px), var(--ml-border-2) calc(50% + .6px), transparent calc(50% + .6px))" }} />
+    </div>
+  );
+}
+
+/* ---------- Glyph: small rect+cross placeholder that replaces decorative icons ---------- */
+function Glyph({ size = 50, radius = 12, style }) {
+  return <Placeholder style={{ width: size, height: size, flex: "none", ...style }} radius={radius} />;
+}
+
+/* ---------- Pill button ---------- */
+function Btn({ children, variant = "solid", size = "md", onClick, style, icon, type }) {
+  const base = {
+    display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 9,
+    fontFamily: "Inter", fontWeight: 500, borderRadius: 50, cursor: "pointer",
+    border: "1px solid transparent", whiteSpace: "nowrap",
+    transition: "background .18s ease, transform .12s ease, border-color .18s ease, color .18s ease",
+  };
+  const sizes = {
+    lg: { padding: "18px 40px", fontSize: 16 },
+    md: { padding: "15px 34px", fontSize: 15 },
+    sm: { padding: "11px 24px", fontSize: 14 },
+  };
+  const variants = {
+    solid: { background: "#000", color: "#fff" },
+    ghost: { background: "transparent", color: "var(--ml-ink-900)", borderColor: "var(--ml-border-2)" },
+    light: { background: "#fff", color: "var(--ml-ink-900)" },
+  };
+  const [hover, setHover] = React.useState(false);
+  const hoverStyle = hover
+    ? (variant === "solid" ? { background: "#2a2a2a" }
+      : variant === "ghost" ? { background: "var(--ml-ink-900)", color: "#fff", borderColor: "var(--ml-ink-900)" }
+      : { background: "#f0f0f0" })
+    : null;
+  return (
+    <button type={type || "button"} onClick={onClick}
+      onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      style={{ ...base, ...sizes[size], ...variants[variant], ...hoverStyle, ...style }}>
+      {children}
+      {icon && <Icon name={icon} size={size === "sm" ? 16 : 18} stroke={1.8} />}
+    </button>
+  );
+}
+
+function Chip({ children, dark }) {
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 5,
+      border: `1px solid ${dark ? "#3a3a3a" : "var(--ml-border-badge)"}`,
+      background: dark ? "transparent" : "#fff",
+      font: "400 13px Inter", color: dark ? "#cfd3d8" : "var(--ml-text-slate-2)",
+    }}>{children}</span>
+  );
+}
+
+/* ---------- Section wrapper: 1600 column, 160 gutters at 1920 ---------- */
+function Section({ children, style, id }) {
+  return (
+    <section id={id} style={{ width: "100%", display: "flex", justifyContent: "center", ...style }}>
+      <div style={{ width: "100%", maxWidth: 1600, padding: "0 40px", boxSizing: "border-box" }}>
+        {children}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Section heading: eyebrow (num + label) + title + sub + action ---------- */
+function SectionHead({ num, eyebrow, title, sub, action, onAction, actionIcon, align = "split" }) {
+  const head = (
+    <div style={{ maxWidth: align === "center" ? 760 : 820 }}>
+      {(eyebrow || num) && (
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18,
+          justifyContent: align === "center" ? "center" : "flex-start" }}>
+          {num && <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)", letterSpacing: "0.04em" }}>{num}</span>}
+          {num && <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />}
+          {eyebrow && <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>{eyebrow}</span>}
+        </div>
+      )}
+      <h2 style={{ margin: 0, font: "500 34px/1.12 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)", textWrap: "balance" }}>{title}</h2>
+      {sub && <p style={{ margin: "16px 0 0", font: "400 16px/27px Inter", color: "var(--ml-text-slate)", maxWidth: 560, textWrap: "pretty" }}>{sub}</p>}
+    </div>
+  );
+  if (align === "center") {
+    return <div style={{ display: "grid", placeItems: "center", textAlign: "center", marginBottom: 48 }}>{head}</div>;
+  }
+  return (
+    <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 32, marginBottom: 44, flexWrap: "wrap" }}>
+      {head}
+      {action && <Btn variant="ghost" size="sm" onClick={onAction} icon={actionIcon}>{action}</Btn>}
+    </div>
+  );
+}
+
+/* ---------- Slider arrow (round prev/next) ---------- */
+function SliderArrow({ dir, onClick, disabled }) {
+  return (
+    <button onClick={onClick} disabled={disabled} style={{
+      width: 50, height: 50, borderRadius: "50%", cursor: disabled ? "default" : "pointer",
+      background: "#fff", border: "1px solid var(--ml-border-2)", display: "grid", placeItems: "center",
+      opacity: disabled ? 0.4 : 1, transition: "background .15s, opacity .15s",
+    }}
+    onMouseEnter={(e) => { if (!disabled) e.currentTarget.style.background = "var(--ml-surface-1)"; }}
+    onMouseLeave={(e) => e.currentTarget.style.background = "#fff"}>
+      <Icon name={dir === "left" ? "arrowL" : "arrowR"} size={20} stroke={1.8} color="#141414" />
+    </button>
+  );
+}
+
+/* ---------- Generic horizontal card slider (header + track + dots) ---------- */
+function CardSlider({ id, num, eyebrow, title, sub, action, actionIcon = "arrowR", onAction, perView = 3, gap = 20, children }) {
+  const items = React.Children.toArray(children);
+  const [idx, setIdx] = React.useState(0);
+  const maxIdx = Math.max(0, items.length - perView);
+  const clamp = (v) => Math.max(0, Math.min(maxIdx, v));
+  React.useEffect(() => { setIdx((v) => Math.min(v, maxIdx)); }, [maxIdx]);
+
+  return (
+    <Section id={id} style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 32, marginBottom: 44, flexWrap: "wrap" }}>
+        <div style={{ maxWidth: 820 }}>
+          {(eyebrow || num) && (
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+              {num && <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)", letterSpacing: "0.04em" }}>{num}</span>}
+              {num && <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />}
+              {eyebrow && <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>{eyebrow}</span>}
+            </div>
+          )}
+          <h2 style={{ margin: 0, font: "500 34px/1.12 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)", textWrap: "balance" }}>{title}</h2>
+          {sub && <p style={{ margin: "16px 0 0", font: "400 16px/27px Inter", color: "var(--ml-text-slate)", maxWidth: 560, textWrap: "pretty" }}>{sub}</p>}
+        </div>
+        {maxIdx > 0 && (
+          <div style={{ display: "flex", gap: 12 }}>
+            <SliderArrow dir="left" disabled={idx === 0} onClick={() => setIdx((v) => clamp(v - 1))} />
+            <SliderArrow dir="right" disabled={idx >= maxIdx} onClick={() => setIdx((v) => clamp(v + 1))} />
+          </div>
+        )}
+      </div>
+
+      <div style={{ overflow: "hidden" }}>
+        <div style={{ display: "flex", gap: gap, transition: "transform .5s cubic-bezier(.4,0,.1,1)",
+          transform: `translateX(calc(${-idx} * (100% + ${gap}px) / ${perView}))` }}>
+          {items.map((child, i) => (
+            <div key={i} style={{ flex: `0 0 calc((100% - ${gap * (perView - 1)}px) / ${perView})`, boxSizing: "border-box", display: "flex" }}>
+              <div style={{ width: "100%" }}>{child}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {(maxIdx > 0 || action) && (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 32, gap: 24, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 7 }}>
+            {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+              <button key={i} onClick={() => setIdx(i)} aria-label={`Слайд ${i + 1}`} style={{
+                width: i === idx ? 30 : 9, height: 9, borderRadius: 50, border: "none", cursor: "pointer",
+                background: i === idx ? "#141414" : "var(--ml-border-2)", transition: "all .25s ease", padding: 0 }} />
+            ))}
+          </div>
+          {action && <Btn variant="ghost" size="sm" icon={actionIcon} onClick={onAction}>{action}</Btn>}
+        </div>
+      )}
+    </Section>
+  );
+}
+
+const fieldStyle = {
+  width: "100%", height: 58, padding: "0 22px", borderRadius: 50,
+  border: "1px solid var(--ml-border-input)", background: "#fff", font: "400 14px Inter",
+  color: "#141414", boxSizing: "border-box", outline: "none",
+};
+
+/* ---------- Cross-page navigation helpers ---------- */
+const RT = {
+  HOME: "index.html",
+  ALL: "Услуги.html",
+  ABOUT: "О компании.html",
+  EXPERTS: "Эксперты.html",
+  DOCS: "Документы.html",
+  ONLINE: "Онлайн-сервисы.html",
+  REVIEWS: "Отзывы.html",
+  CONTACTS: "Контакты.html",
+  TERMS: "Пользовательское соглашение.html",
+  PRIVACY: "Политика конфиденциальности.html",
+  detail: (slug) => "Услуга.html?s=" + encodeURIComponent(slug),
+  services: (key) => "Услуги.html#group-" + key,
+  home: (id) => "index.html#" + id,
+};
+
+Object.assign(window, { Icon, Logo, Placeholder, Glyph, Btn, Chip, Section, SectionHead, SliderArrow, CardSlider, fieldStyle, RT });
+
+</script>
+<script type="text/babel">
+// Content data for the РАМ-ТВ expertise homepage. Russian throughout.
+
+const SERVICE_GROUPS = [
+  {
+    key: "proj",
+    title: "Проекты и изыскания",
+    items: [
+      { n: "Экспертиза проектной документации", slug: "ekspertiza-pd" },
+      { n: "Экспертиза результатов инженерных изысканий", slug: "ekspertiza-rii" },
+      { n: "Экспертное сопровождение", slug: "soprovozhdenie" },
+      { n: "Предэкспертное сопровождение", slug: "predekspertnoe" },
+      { n: "Формирование пояснительной записки XML", slug: "pz-xml" },
+      { n: "Формирование технического задания XML", slug: "tz-xml" },
+      { n: "Сервис цифровой экспертизы ЕЦПЭ", slug: "ecpe" },
+      { n: "Аудит проектной и сметной документации", slug: "audit" },
+      { n: "Сопровождение проекта на этапах согласования", slug: "soglasovanie" },
+    ],
+  },
+  {
+    key: "smeta",
+    title: "Сметы",
+    items: [
+      { n: "Экспертиза сметной документации", slug: "ekspertiza-smet" },
+      { n: "Ведомости объёмов работ", slug: "vor" },
+      { n: "Конъюнктурный анализ цен", slug: "konyunktura" },
+      { n: "Сметная документация (ССРСС, ОС, ЛСР)", slug: "smetnaya-dok" },
+      { n: "Сметы на проектно-изыскательские работы", slug: "smety-pir" },
+      { n: "Проверка сметной документации XML-схема Минстрой", slug: "xml-minstroy" },
+    ],
+  },
+];
+
+// First 8 cards — 4 from each direction.
+const SERVICE_CARDS = [
+  { slug: "ekspertiza-pd",   icon: "doc",      g: "Проекты", t: "Экспертиза проектной документации", d: "Проверка соответствия проекта техническим регламентам, нормам и требованиям безопасности." },
+  { slug: "ekspertiza-rii",  icon: "survey",   g: "Изыскания", t: "Экспертиза инженерных изысканий", d: "Оценка достоверности и достаточности результатов изысканий для проектирования." },
+  { slug: "soprovozhdenie",  icon: "support",  g: "Сопровождение", t: "Экспертное сопровождение", d: "Сопровождение проекта в процессе внесения изменений без повторной экспертизы." },
+  { slug: "audit",           icon: "search",   g: "Аудит", t: "Аудит проектной и сметной документации", d: "Независимая проверка комплектности и качества до подачи на экспертизу." },
+  { slug: "ekspertiza-smet", icon: "estimate", g: "Сметы", t: "Экспертиза сметной документации", d: "Проверка обоснованности стоимости и корректности применённых расценок." },
+  { slug: "vor",             icon: "flow",     g: "Сметы", t: "Ведомости объёмов работ", d: "Составление и проверка ВОР по разделам проектной документации." },
+  { slug: "konyunktura",     icon: "scales",   g: "Сметы", t: "Конъюнктурный анализ цен", d: "Подтверждение текущих цен на материалы и оборудование по рынку." },
+  { slug: "xml-minstroy",    icon: "xml",      g: "XML", t: "Проверка по XML-схеме Минстрой", d: "Подготовка и контроль сметной документации в машиночитаемом формате." },
+];
+
+const STAGES = [
+  { n: "01", icon: "chat",    t: "Консультация и анализ проекта", d: "Изучаем состав документации, оцениваем сроки и объём работ, отвечаем на вопросы." },
+  { n: "02", icon: "doc",     t: "Заключение договора", d: "Фиксируем стоимость, сроки и состав услуг. Прозрачные условия без скрытых платежей." },
+  { n: "03", icon: "layers",  t: "Проверка комплектности", d: "Проверяем полноту разделов и соответствие требованиям к составу документации." },
+  { n: "04", icon: "search",  t: "Проведение экспертизы", d: "Аттестованные эксперты проверяют решения на соответствие техническим регламентам." },
+  { n: "05", icon: "support", t: "Работа с замечаниями", d: "Формируем перечень замечаний и сопровождаем устранение вместе с проектировщиком." },
+  { n: "06", icon: "award",   t: "Выдача заключения", d: "Выдаём положительное заключение для получения разрешения на строительство." },
+];
+
+const ADVANTAGES = [
+  { n: "01", t: "Единая аккредитация на ПД и РИИ", d: "Экспертиза проектной документации и результатов инженерных изысканий в одной организации." },
+  { n: "02", t: "Работа через платформу ЕЦПЭ", d: "Проводим цифровую экспертизу в Единой цифровой платформе экспертизы." },
+  { n: "03", t: "Аттестованные эксперты", d: "Специалисты с действующей квалификационной аттестацией по профильным направлениям." },
+  { n: "04", t: "Гибкие сроки проведения", d: "Подбираем график под ваш проект, в том числе для срочных задач." },
+  { n: "05", t: "Индивидуальный подход", d: "Учитываем специфику объекта и помогаем выстроить оптимальный маршрут согласования." },
+  { n: "06", t: "Бесплатное сопровождение", d: "После выдачи заключения консультируем по вопросам его применения без доплат." },
+];
+
+const ABOUT_POINTS = [
+  { icon: "shield",   t: "Аккредитованная организация", d: "Действующая аккредитация на экспертизу ПД и результатов инженерных изысканий." },
+  { icon: "layers",   t: "ПД и РИИ в одной компании", d: "Полный цикл экспертизы без передачи документации между организациями." },
+  { icon: "globe",    t: "Работа на платформе ЕЦПЭ", d: "Цифровой формат взаимодействия и прозрачный статус по каждому проекту." },
+  { icon: "award",    t: "До разрешения на строительство", d: "Сопровождаем проект вплоть до получения разрешения на строительство." },
+];
+
+const EXPERTS = [
+  { fio: "Романов А. В.", spec: "Объёмно-планировочные и архитектурные решения", exp: "Стаж 18 лет" },
+  { fio: "Морозова Е. С.", spec: "Конструктивные решения, основания и фундаменты", exp: "Стаж 15 лет" },
+  { fio: "Соколов Д. И.", spec: "Инженерно-геологические изыскания", exp: "Стаж 21 год" },
+  { fio: "Лебедева Н. П.", spec: "Сметная документация, ценообразование", exp: "Стаж 13 лет" },
+  { fio: "Ковалёв С. В.", spec: "Системы электроснабжения и связи", exp: "Стаж 16 лет" },
+  { fio: "Никитина О. А.", spec: "Водоснабжение, водоотведение, ОВиК", exp: "Стаж 14 лет" },
+  { fio: "Семёнов И. Г.", spec: "Пожарная безопасность", exp: "Стаж 19 лет" },
+  { fio: "Воронцова М. Д.", spec: "Охрана окружающей среды, экология", exp: "Стаж 12 лет" },
+];
+
+const STATS = [
+  { v: "12", suffix: " лет", k: "на рынке экспертизы" },
+  { v: "1 400", suffix: "+", k: "выданных заключений" },
+  { v: "24", suffix: "", k: "аттестованных эксперта" },
+  { v: "98", suffix: "%", k: "положительных заключений" },
+];
+
+const DOCUMENTS = [
+  { t: "Свидетельство об аккредитации", d: "Аккредитация на проведение негосударственной экспертизы." },
+  { t: "Регламент проведения экспертизы", d: "Порядок и сроки оказания экспертных услуг." },
+  { t: "Анкета для заявителя", d: "Форма для подготовки исходных данных по объекту." },
+  { t: "Образец заявления", d: "Заявление о проведении экспертизы документации." },
+  { t: "Выписка из реестра", d: "Сведения об аккредитованном лице." },
+  { t: "Аттестаты экспертов", d: "Действующие квалификационные аттестаты." },
+  { t: "Полис страхования ответственности", d: "Страхование профессиональной ответственности." },
+  { t: "Договор-оферта", d: "Типовая форма договора на проведение экспертизы." },
+];
+
+const ONLINE_SERVICES = [
+  { icon: "globe",  t: "ЕЦПЭ", d: "Единая цифровая платформа экспертизы — подача и сопровождение в цифровом виде.", cta: "Перейти на платформу", url: "#" },
+  { icon: "shield", t: "Госуслуги", d: "Получение государственных услуг и проверка статусов в электронном виде.", cta: "Перейти на портал", url: "#" },
+  { icon: "xml",    t: "Пояснительная записка XML", d: "Подготовка пояснительной записки в машиночитаемом формате.", cta: "Открыть сервис", url: "#" },
+  { icon: "flow",   t: "Техническое задание XML", d: "Формирование технического задания по XML-схеме Минстроя.", cta: "Открыть сервис", url: "#" },
+];
+
+const REVIEWS = [
+  { n: "ООО «СтройИнвест»", role: "Технический заказчик", d: "12.05.2026", src: "ЕЦПЭ", r: 5,
+    t: "Получили положительное заключение в срок. Эксперты подробно разъяснили замечания и помогли быстро их закрыть. Прозрачная работа на платформе ЕЦПЭ — видели статус на каждом этапе." },
+  { n: "Девелопер «Северный»", role: "Застройщик", d: "28.04.2026", src: "Яндекс", r: 5,
+    t: "Заказывали экспертизу ПД и изысканий в одной компании — это сильно сэкономило время. Отдельно отмечу сопровождение: вопросы по применению заключения решали уже после выдачи." },
+  { n: "Проектное бюро «Контур»", role: "Проектная организация", d: "03.04.2026", src: "2ГИС", r: 5,
+    t: "Сметную документацию проверили внимательно, конъюнктурный анализ цен подтвердили корректно. Работаем не первый проект, сроки соблюдают, документы оформляют без задержек." },
+  { n: "АО «ГорПроект»", role: "Инвестор", d: "19.03.2026", src: "ЕЦПЭ", r: 5,
+    t: "Грамотное предэкспертное сопровождение позволило выйти на экспертизу без лишних итераций. Индивидуальный подход к объекту чувствуется — это не конвейер." },
+  { n: "ООО «ТеплоСеть»", role: "Технический заказчик", d: "26.02.2026", src: "2ГИС", r: 5,
+    t: "Проверяли проект линейного объекта — теплосети. Эксперты по инженерным системам и сметам отработали слаженно, замечания были по делу. Заключение получили без задержек." },
+  { n: "Строительная компания «Орион»", role: "Застройщик", d: "11.02.2026", src: "Яндекс", r: 4,
+    t: "В целом довольны: сроки выдержали, по сметам дали развёрнутые пояснения. Небольшие шероховатости в коммуникации на старте, но дальше всё прошло гладко." },
+];
+
+Object.assign(window, {
+  SERVICE_GROUPS, SERVICE_CARDS, STAGES, ADVANTAGES, ABOUT_POINTS,
+  EXPERTS, STATS, DOCUMENTS, ONLINE_SERVICES, REVIEWS,
+});
+
+</script>
+<script type="text/babel">
+// Detail content for service pages. Keyed by slug; getService() fills defaults.
+
+// Per-slug overrides: title, lead, icon, group, intro paragraphs, "what we check" bullets,
+// optional custom price rows / faq. Everything else falls back to sensible defaults.
+const SERVICE_DETAILS = {
+  "ekspertiza-pd": {
+    icon: "doc", group: "Проекты и изыскания",
+    title: "Экспертиза проектной документации",
+    lead: "Проверяем проектную документацию на соответствие техническим регламентам, национальным стандартам и требованиям безопасности — и помогаем получить положительное заключение.",
+    intro: [
+      "Негосударственная экспертиза проектной документации подтверждает, что принятые в проекте решения соответствуют требованиям технических регламентов, в том числе санитарно-эпидемиологическим, экологическим, противопожарным и требованиям промышленной безопасности.",
+      "Мы проверяем все разделы проектной документации, выявляем несоответствия на ранней стадии и сопровождаем устранение замечаний вместе с проектировщиком, чтобы вы получили заключение в согласованный срок.",
+    ],
+    checks: [
+      "Схема планировочной организации земельного участка",
+      "Архитектурные и объёмно-планировочные решения",
+      "Конструктивные и объёмно-планировочные решения",
+      "Сведения об инженерном оборудовании и сетях",
+      "Проект организации строительства",
+      "Мероприятия по пожарной безопасности",
+      "Мероприятия по охране окружающей среды",
+      "Мероприятия по доступности для МГН",
+    ],
+  },
+  "ekspertiza-rii": {
+    icon: "survey", group: "Проекты и изыскания",
+    title: "Экспертиза результатов инженерных изысканий",
+    lead: "Оцениваем достоверность и достаточность результатов инженерных изысканий для дальнейшего проектирования объекта.",
+    intro: [
+      "Экспертиза результатов инженерных изысканий подтверждает соответствие материалов изысканий требованиям технических регламентов и достаточность данных для разработки проектной документации.",
+      "Проводим экспертизу инженерно-геодезических, инженерно-геологических, инженерно-гидрометеорологических и инженерно-экологических изысканий в одной организации.",
+    ],
+    checks: [
+      "Инженерно-геодезические изыскания",
+      "Инженерно-геологические изыскания",
+      "Инженерно-гидрометеорологические изыскания",
+      "Инженерно-экологические изыскания",
+      "Соответствие программы изысканий заданию",
+      "Достаточность данных для проектирования",
+    ],
+  },
+  "ekspertiza-smet": {
+    icon: "estimate", group: "Сметы",
+    title: "Экспертиза сметной документации",
+    lead: "Проверяем обоснованность стоимости строительства, корректность применённых расценок и индексов пересчёта.",
+    intro: [
+      "Экспертиза сметной документации подтверждает достоверность определения сметной стоимости строительства, реконструкции или капитального ремонта объекта капитального строительства.",
+      "Проверяем объёмы работ, применённую сметно-нормативную базу, индексы и коэффициенты, а также корректность конъюнктурного анализа цен.",
+    ],
+    checks: [
+      "Применённая сметно-нормативная база",
+      "Объёмы работ и соответствие проекту",
+      "Индексы и коэффициенты пересчёта",
+      "Конъюнктурный анализ цен",
+      "Накладные расходы и сметная прибыль",
+      "Сводный сметный расчёт стоимости",
+    ],
+    prices: [
+      ["Локальные сметы", "от 5 раб. дней", "от 45 000 ₽"],
+      ["Объектные сметы", "от 7 раб. дней", "от 70 000 ₽"],
+      ["Сводный сметный расчёт", "от 10 раб. дней", "от 110 000 ₽"],
+      ["Комплексная экспертиза смет", "от 12 раб. дней", "по запросу"],
+    ],
+  },
+};
+
+// Generic defaults for any slug not richly described above.
+function getService(slug) {
+  const fromGroups = (() => {
+    for (const g of SERVICE_GROUPS) {
+      const hit = g.items.find((i) => i.slug === slug);
+      if (hit) return { name: hit.n, group: g.title };
+    }
+    return null;
+  })();
+
+  const d = SERVICE_DETAILS[slug] || {};
+  const title = d.title || (fromGroups && fromGroups.name) || "Услуга экспертизы";
+  const group = d.group || (fromGroups && fromGroups.group) || "Услуги";
+
+  return {
+    slug,
+    title,
+    group,
+    icon: d.icon || "doc",
+    lead: d.lead || `Оказываем услугу «${title.toLowerCase()}» в составе негосударственной экспертизы. Помогаем подготовить документацию и получить положительный результат в согласованный срок.`,
+    intro: d.intro || [
+      `Услуга «${title}» выполняется аттестованными экспертами в соответствии с требованиями технических регламентов и национальных стандартов.`,
+      "Мы анализируем исходные материалы, формируем перечень замечаний и сопровождаем их устранение вместе с заказчиком и проектировщиком — до получения итогового результата.",
+    ],
+    checks: d.checks || [
+      "Комплектность и состав документации",
+      "Соответствие техническим регламентам",
+      "Соответствие национальным стандартам",
+      "Корректность принятых решений",
+      "Полнота исходных данных",
+      "Оформление в требуемом формате",
+    ],
+    prices: d.prices || [
+      ["Жилые здания", "от 10 раб. дней", "от 90 000 ₽"],
+      ["Общественные здания", "от 12 раб. дней", "от 120 000 ₽"],
+      ["Производственные объекты", "от 15 раб. дней", "по запросу"],
+      ["Линейные объекты", "от 15 раб. дней", "по запросу"],
+    ],
+    faq: d.faq || DEFAULT_FAQ,
+  };
+}
+
+const DEFAULT_FAQ = [
+  { q: "Чем отличается негосударственная экспертиза от государственной?",
+    a: "Негосударственная экспертиза проводится аккредитованными организациями и в большинстве случаев равнозначна государственной по юридической силе заключения. Сроки и условия при этом, как правило, более гибкие." },
+  { q: "Какие документы нужны для начала работы?",
+    a: "Потребуется проектная документация в полном составе, результаты инженерных изысканий, задание на проектирование и правоустанавливающие документы на земельный участок. Точный перечень уточняем на консультации." },
+  { q: "Сколько занимает проведение экспертизы?",
+    a: "Срок зависит от состава документации и сложности объекта. Ориентировочные сроки указаны в таблице цен; точный срок фиксируется в договоре." },
+  { q: "Что если в документации найдены замечания?",
+    a: "Мы формируем структурированный перечень замечаний и сопровождаем их устранение вместе с проектировщиком. Повторная проверка устранённых замечаний входит в стоимость." },
+  { q: "Выдаёте ли вы заключение на платформе ЕЦПЭ?",
+    a: "Да, мы работаем на Единой цифровой платформе экспертизы и формируем заключение в цифровом виде с прослеживаемым статусом по каждому проекту." },
+];
+
+const SERVICE_CASES = [
+  { t: "Жилой комплекс, 3 очереди", type: "Проектная документация", res: "Положительное заключение" },
+  { t: "Производственный корпус", type: "ПД + результаты изысканий", res: "Срок 14 раб. дней" },
+  { t: "Школа на 1 000 мест", type: "Сметная документация", res: "Стоимость снижена на 6%" },
+  { t: "Торговый центр, 24 000 м²", type: "Проектная документация", res: "Положительное заключение" },
+  { t: "Многоуровневый паркинг", type: "ПД + результаты изысканий", res: "Срок 18 раб. дней" },
+  { t: "Реконструкция котельной", type: "Сметная документация", res: "Стоимость снижена на 9%" },
+];
+
+const SERVICE_LICENSES = [
+  { t: "Свидетельство об аккредитации", d: "На негосударственную экспертизу ПД и РИИ." },
+  { t: "Выписка из реестра", d: "Сведения об аккредитованном лице." },
+  { t: "Аттестаты экспертов", d: "Действующие квалификационные аттестаты." },
+  { t: "Полис страхования", d: "Страхование профессиональной ответственности." },
+  { t: "Область аккредитации", d: "Перечень направлений негосударственной экспертизы." },
+  { t: "Приказ Росаккредитации", d: "О внесении в реестр аккредитованных лиц." },
+  { t: "Сертификат СМК", d: "Система менеджмента качества по ISO 9001." },
+];
+
+Object.assign(window, { SERVICE_DETAILS, getService, DEFAULT_FAQ, SERVICE_CASES, SERVICE_LICENSES });
+
+</script>
+<script type="text/babel">
+// Reusable blocks for Услуги / Услуга pages.
+
+// Breadcrumb
+function Crumbs({ trail }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 9, flexWrap: "wrap", marginBottom: 26 }}>
+      {trail.map((c, i) => (
+        <React.Fragment key={i}>
+          {i > 0 && <Icon name="chevron" size={13} stroke={1.8} color="var(--ml-text-muted)" />}
+          {c.href
+            ? <a href={c.href} style={{ font: "400 13px Inter", color: "var(--ml-text-nav)", textDecoration: "none" }}>{c.label}</a>
+            : <span style={{ font: "400 13px Inter", color: "var(--ml-text-muted)" }}>{c.label}</span>}
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+// Generic page hero: eyebrow + title + lead + optional actions + side visual
+function PageHero({ eyebrow, title, lead, actions, crumbs, visual = true, visualIcon = "building", visualLabel }) {
+  return (
+    <Section style={{ paddingTop: 48 }}>
+      {crumbs && <Crumbs trail={crumbs} />}
+      <div style={{ display: "grid", gridTemplateColumns: visual ? "1fr 520px" : "1fr", gap: 56, alignItems: "center" }}>
+        <div>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 9, marginBottom: 22 }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#141414" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>{eyebrow}</span>
+          </div>
+          <h1 style={{ margin: 0, font: "500 46px/1.08 Inter", letterSpacing: "-0.018em", color: "#000", textWrap: "balance" }}>{title}</h1>
+          {lead && <p style={{ margin: "24px 0 0", font: "300 18px/29px Inter", color: "#1b1b1b", maxWidth: 600, textWrap: "pretty" }}>{lead}</p>}
+          {actions && <div style={{ display: "flex", alignItems: "center", gap: 18, marginTop: 34, flexWrap: "wrap" }}>{actions}</div>}
+        </div>
+        {visual && <Placeholder style={{ minHeight: 380, borderRadius: 30 }} radius={30} icon={visualIcon} label={visualLabel} />}
+      </div>
+    </Section>
+  );
+}
+
+// "Этапы оказания услуг" — compact numbered grid (non-slider variant for service pages)
+function StagesGrid({ title = "Этапы оказания услуги", sub = "Понятный процесс от консультации до получения заключения.", num }) {
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Процесс" title={title} sub={sub} />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0,
+        borderTop: "1px solid var(--ml-border)", borderLeft: "1px solid var(--ml-border)" }}>
+        {STAGES.map((s) => (
+          <div key={s.n} style={{ padding: "34px 34px", borderRight: "1px solid var(--ml-border)", borderBottom: "1px solid var(--ml-border)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 22 }}>
+              <span style={{ font: "500 40px/1 Inter", color: "var(--ml-wire-2)", letterSpacing: "-0.02em" }}>{s.n}</span>
+              <Glyph size={48} radius={12} />
+            </div>
+            <h4 style={{ margin: "0 0 9px", font: "500 19px/25px Inter", color: "var(--ml-ink-900)" }}>{s.t}</h4>
+            <p style={{ margin: 0, font: "400 14px/22px Inter", color: "var(--ml-text-slate)" }}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// Price table
+function PriceTable({ rows, num, onCalc }) {
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Стоимость"
+        title="Стоимость и сроки"
+        sub="Ориентировочные цены. Точная стоимость зависит от состава документации и сложности объекта."
+        action="Рассчитать точно" onAction={onCalc} actionIcon="arrowR" />
+      <div style={{ border: "1px solid var(--ml-border)", borderRadius: 24, overflow: "hidden" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 220px 220px", background: "#141414", color: "#fff" }}>
+          {["Тип объекта / услуги", "Срок", "Стоимость"].map((h, i) => (
+            <div key={h} style={{ padding: "18px 28px", font: "500 14px Inter",
+              textAlign: i ? "right" : "left", color: "#e9ebed" }}>{h}</div>
+          ))}
+        </div>
+        {rows.map((r, i) => (
+          <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 220px 220px",
+            borderTop: "1px solid var(--ml-border)", background: i % 2 ? "var(--ml-surface-1)" : "#fff" }}>
+            <div style={{ padding: "20px 28px", font: "500 16px Inter", color: "var(--ml-ink-900)" }}>{r[0]}</div>
+            <div style={{ padding: "20px 28px", font: "400 15px Inter", color: "var(--ml-text-slate)", textAlign: "right" }}>{r[1]}</div>
+            <div style={{ padding: "20px 28px", font: "500 16px Inter", color: "#141414", textAlign: "right", whiteSpace: "nowrap" }}>{r[2]}</div>
+          </div>
+        ))}
+      </div>
+      <p style={{ margin: "16px 0 0", font: "400 13px Inter", color: "var(--ml-text-muted)" }}>
+        Указанные цены не являются публичной офертой. Окончательная стоимость фиксируется в договоре.
+      </p>
+    </Section>
+  );
+}
+
+// Cases — horizontal slider
+function CasesBlock({ num }) {
+  return (
+    <CardSlider num={num} eyebrow="Кейсы" title="Примеры проектов"
+      sub="Объекты, по которым мы провели экспертизу." perView={3} gap={20}>
+      {SERVICE_CASES.map((c) => (
+        <div key={c.t} style={{ height: "100%", boxSizing: "border-box",
+          background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", borderRadius: 20, padding: 22 }}>
+          <Placeholder style={{ width: "100%", aspectRatio: "16/10", marginBottom: 22 }} radius={14} icon="building" />
+          <span style={{ font: "500 11px Inter", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ml-text-muted)" }}>{c.type}</span>
+          <h4 style={{ margin: "12px 0 18px", font: "500 20px/26px Inter", color: "var(--ml-ink-900)" }}>{c.t}</h4>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 9, paddingTop: 16, borderTop: "1px solid var(--ml-border)",
+            width: "100%", font: "500 14px Inter", color: "#141414" }}>
+            <Icon name="check" size={17} stroke={2} /> {c.res}
+          </div>
+        </div>
+      ))}
+    </CardSlider>
+  );
+}
+
+// Licenses / accreditation + lightbox
+function LicenseBlock({ num, slider = true, data = SERVICE_LICENSES }) {
+  const [view, setView] = React.useState(null);
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") setView(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const Card = ({ l }) => (
+    <div style={{ height: "100%", boxSizing: "border-box", background: "#fff", border: "1px solid var(--ml-border)", borderRadius: 20, padding: 22, display: "flex", flexDirection: "column" }}>
+      <Placeholder style={{ width: "100%", aspectRatio: "3/4", marginBottom: 20 }} radius={12} icon="award" />
+      <h4 style={{ margin: "0 0 8px", font: "500 16px/22px Inter", color: "var(--ml-ink-900)" }}>{l.t}</h4>
+      <p style={{ margin: "0 0 20px", font: "400 13px/20px Inter", color: "var(--ml-text-slate)" }}>{l.d}</p>
+      <Btn size="sm" variant="ghost" icon="search" style={{ marginTop: "auto", alignSelf: "flex-start" }}
+        onClick={() => setView(l)}>Открыть полностью</Btn>
+    </div>
+  );
+
+  const lightbox = view && (
+    <div onClick={() => setView(null)} style={{ position: "fixed", inset: 0, zIndex: 100,
+      background: "rgba(20,20,20,0.55)", backdropFilter: "blur(3px)", display: "grid", placeItems: "center", padding: 32,
+      animation: "ramFade .2s ease" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ width: 560, maxWidth: "100%", background: "#fff",
+        borderRadius: 24, padding: 28, position: "relative", animation: "ramRise .28s cubic-bezier(.2,.7,.2,1)" }}>
+        <button onClick={() => setView(null)} style={{ position: "absolute", top: 20, right: 20, width: 38, height: 38,
+          borderRadius: "50%", border: "1px solid var(--ml-border-2)", background: "#fff", cursor: "pointer",
+          display: "grid", placeItems: "center", color: "#79828d", zIndex: 2 }}>
+          <Icon name="x" size={18} stroke={1.8} />
+        </button>
+        <Placeholder style={{ width: "100%", aspectRatio: "3/4", marginBottom: 20 }} radius={14} icon="award" label="Скан документа" />
+        <h4 style={{ margin: "0 0 6px", font: "500 20px Inter", color: "var(--ml-ink-900)" }}>{view.t}</h4>
+        <p style={{ margin: 0, font: "400 14px/22px Inter", color: "var(--ml-text-slate)" }}>{view.d}</p>
+      </div>
+    </div>
+  );
+
+  if (slider) {
+    return (
+      <React.Fragment>
+        <CardSlider num={num} eyebrow="Документы" title="Лицензии и аккредитации"
+          sub="Подтверждаем право на проведение негосударственной экспертизы." perView={4} gap={20}>
+          {data.map((l) => <Card key={l.t} l={l} />)}
+        </CardSlider>
+        {lightbox}
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Документы" title="Лицензии и аккредитации"
+        sub="Подтверждаем право на проведение негосударственной экспертизы." />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
+        {data.map((l) => <Card key={l.t} l={l} />)}
+      </div>
+      {lightbox}
+    </Section>
+  );
+}
+
+// FAQ accordion
+function FaqAccordion({ items, num }) {
+  const [open, setOpen] = React.useState(0);
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Вопросы" title="Частые вопросы"
+        sub="Коротко отвечаем на то, что спрашивают чаще всего." />
+      <div style={{ border: "1px solid var(--ml-border)", borderRadius: 24, overflow: "hidden" }}>
+        {items.map((it, i) => {
+          const isOpen = open === i;
+          return (
+            <div key={i} style={{ borderTop: i ? "1px solid var(--ml-border)" : "none", background: isOpen ? "var(--ml-surface-1)" : "#fff" }}>
+              <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
+                width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24,
+                padding: "26px 32px", background: "transparent", border: "none", cursor: "pointer", textAlign: "left" }}>
+                <span style={{ font: "500 18px/26px Inter", color: "var(--ml-ink-900)" }}>{it.q}</span>
+                <span style={{ width: 38, height: 38, borderRadius: "50%", flex: "none", border: "1px solid var(--ml-border-2)",
+                  display: "grid", placeItems: "center", background: "#fff" }}>
+                  <Icon name={isOpen ? "minus" : "plus"} size={18} stroke={1.8} color="#141414" />
+                </span>
+              </button>
+              <div style={{ display: "grid", gridTemplateRows: isOpen ? "1fr" : "0fr", transition: "grid-template-rows .35s ease" }}>
+                <div style={{ overflow: "hidden", minHeight: 0 }}>
+                  <p style={{ margin: 0, padding: "0 92px 28px 32px", font: "400 15px/25px Inter", color: "var(--ml-text-slate)" }}>{it.a}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+// Stats band — big number + caption row (reusable "цифры" block)
+function StatsBand({ data = STATS, dark = false }) {
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)",
+        border: "1px solid " + (dark ? "#2d2d2d" : "var(--ml-border)"), borderRadius: 24, overflow: "hidden",
+        background: dark ? "#141414" : "transparent" }}>
+        {data.map((s, i) => (
+          <div key={s.k} style={{ padding: "40px 34px", borderLeft: i ? "1px solid " + (dark ? "#2d2d2d" : "var(--ml-border)") : "none" }}>
+            <div style={{ font: "500 46px/1 Inter", letterSpacing: "-0.02em", color: dark ? "#fff" : "#000" }}>
+              {s.v}<span style={{ color: dark ? "#7c828b" : "var(--ml-text-muted)" }}>{s.suffix}</span>
+            </div>
+            <div style={{ font: "400 15px/21px Inter", color: dark ? "#a9adb4" : "var(--ml-text-nav)", marginTop: 12 }}>{s.k}</div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+// Closing CTA band (dark)
+function CtaBand({ onCalc, title = "Готовы обсудить ваш проект?", text = "Оставьте заявку — рассчитаем стоимость экспертизы и предложим оптимальные сроки." }) {
+  return (
+    <Section style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ background: "#141414", borderRadius: 30, padding: "60px 64px", display: "flex",
+        alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" }}>
+        <div style={{ maxWidth: 640 }}>
+          <h2 style={{ margin: 0, font: "500 34px/1.14 Inter", letterSpacing: "-0.01em", color: "#fff", textWrap: "balance" }}>{title}</h2>
+          <p style={{ margin: "16px 0 0", font: "400 16px/27px Inter", color: "#a9adb4" }}>{text}</p>
+        </div>
+        <Btn variant="light" size="lg" onClick={onCalc} icon="arrowR">Рассчитать стоимость</Btn>
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { Crumbs, PageHero, StagesGrid, StatsBand, PriceTable, CasesBlock, LicenseBlock, FaqAccordion, CtaBand });
+
+</script>
+<script type="text/babel">
+// Sticky site header: logo, nav, Услуги hover mega-menu, contacts, CTA.
+// home=true → anchor links scroll on the current page; otherwise they navigate to the home page.
+function Header({ onCalc, onNav, home = false }) {
+  const nav = [
+  { label: "О компании", id: "about", page: RT.ABOUT },
+  { label: "Услуги", id: "services", mega: true, page: RT.ALL },
+  { label: "Эксперты", id: "experts", page: RT.EXPERTS },
+  { label: "Документы", id: "documents", page: RT.DOCS },
+  { label: "Онлайн-сервисы", id: "online", page: RT.ONLINE },
+  { label: "Отзывы", id: "reviews", page: RT.REVIEWS },
+  { label: "Контакты", id: "contacts", page: RT.CONTACTS }];
+
+  const [openMega, setOpenMega] = React.useState(false);
+  const [hoverId, setHoverId] = React.useState(null);
+  const closeTimer = React.useRef(null);
+
+  const openNow = () => {clearTimeout(closeTimer.current);setOpenMega(true);};
+  const closeSoon = () => {closeTimer.current = setTimeout(() => setOpenMega(false), 120);};
+
+  const hrefFor = (n) => n.page ? n.page : home ? "#" + n.id : RT.home(n.id);
+  const onItem = (e, n) => {
+    setOpenMega(false);
+    if (n.page) return; // real navigation to Услуги.html
+    if (home) {e.preventDefault();onNav && onNav(n.id);}
+  };
+
+  return (
+    <header style={{ position: "sticky", top: 0, zIndex: 60 }}>
+      {/* Utility bar */}
+      <div className="rt-utilbar" style={{ background: "#141414", color: "#cfd3d8" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "9px 40px",
+          display: "flex", alignItems: "center", gap: 26, font: "400 13px Inter" }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#9aa0a8" }}>
+            <Icon name="pin" size={15} stroke={1.6} /> г. Владивосток, ул. Проектная, 12, офис 410
+          </span>
+          <span style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "#9aa0a8" }}>
+            <Icon name="clock" size={15} stroke={1.6} /> Пн–Пт, 9:00–18:00
+          </span>
+          <a href="mailto:info@ram-tv.ru" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#e9ebed" }}>
+            <Icon name="mail" size={15} stroke={1.6} /> info@ram-tv.ru
+          </a>
+        </div>
+      </div>
+
+      {/* Main bar */}
+      <div style={{ background: "rgba(255,255,255,0.93)", backdropFilter: "blur(8px)", borderBottom: "1px solid #ededed" }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "16px 40px",
+          display: "flex", alignItems: "center", gap: 28 }}>
+          <Logo />
+          <nav style={{ display: "flex", alignItems: "center", gap: 26, marginLeft: 18 }}>
+            {nav.map((n) =>
+            <div key={n.id}
+            onMouseEnter={() => {setHoverId(n.id);if (n.mega) openNow();}}
+            onMouseLeave={() => {setHoverId(null);if (n.mega) closeSoon();}}
+            style={{ position: "static" }}>
+                <a href={hrefFor(n)} onClick={(e) => onItem(e, n)} style={{
+                display: "inline-flex", alignItems: "center", gap: 5, cursor: "pointer", whiteSpace: "nowrap",
+                font: "500 14px Inter", letterSpacing: "0.005em", textDecoration: "none",
+                color: hoverId === n.id || n.mega && openMega ? "var(--ml-text-nav)" : "#141414",
+                transition: "color .15s ease"
+              }}>
+                  {n.label}
+                  {n.mega && <Icon name="chevron" size={13} stroke={2} style={{ transform: openMega ? "rotate(-90deg)" : "rotate(90deg)", opacity: .6, transition: "transform .2s ease" }} />}
+                </a>
+              </div>
+            )}
+          </nav>
+          <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 22 }}>
+            <a href="tel:+74951234567" style={{ display: "grid", gap: 2, textDecoration: "none", textAlign: "right" }}>
+              <span style={{ font: "600 16px Inter", color: "#141414", whiteSpace: "nowrap" }}>+7 (495) 123-45-67</span>
+              <span style={{ font: "400 11px Inter", color: "var(--ml-text-nav)", letterSpacing: "0.02em" }}>Заказать звонок</span>
+            </a>
+            <Btn size="md" onClick={onCalc}>Рассчитать стоимость</Btn>
+          </div>
+        </div>
+
+        {/* Mega-menu */}
+        <div
+          onMouseEnter={openNow} onMouseLeave={closeSoon}
+          style={{
+            position: "absolute", left: 0, right: 0, top: "100%",
+            background: "#fff", borderBottom: "1px solid #ededed",
+            boxShadow: openMega ? "0 24px 48px rgba(20,24,33,0.10)" : "none",
+            opacity: openMega ? 1 : 0, visibility: openMega ? "visible" : "hidden",
+            transform: openMega ? "translateY(0)" : "translateY(-8px)",
+            transition: "opacity .18s ease, transform .18s ease, visibility .18s",
+            pointerEvents: openMega ? "auto" : "none"
+          }}>
+          <div style={{ maxWidth: 1600, margin: "0 auto", padding: "40px 40px 44px",
+            display: "grid", gridTemplateColumns: "1fr 1fr 300px", gap: 40 }}>
+            {SERVICE_GROUPS.map((grp) =>
+            <div key={grp.key}>
+                <a href={RT.ALL} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18, textDecoration: "none" }}>
+                  <Glyph size={34} radius={9} />
+                  <span style={{ font: "500 16px Inter", color: "var(--ml-ink-900)" }}>{grp.title}</span>
+                </a>
+                <div style={{ display: "grid", gap: 2 }}>
+                  {grp.items.map((it) =>
+                <a key={it.slug} href={RT.detail(it.slug)} style={{
+                  font: "400 14px/1.3 Inter", color: "var(--ml-text-2)", cursor: "pointer", textDecoration: "none",
+                  padding: "8px 10px", borderRadius: 8, transition: "background .12s, color .12s"
+                }}
+                onMouseEnter={(e) => {e.currentTarget.style.background = "var(--ml-surface-1)";e.currentTarget.style.color = "#141414";}}
+                onMouseLeave={(e) => {e.currentTarget.style.background = "transparent";e.currentTarget.style.color = "var(--ml-text-2)";}}>
+                      {it.n}
+                    </a>
+                )}
+                </div>
+              </div>
+            )}
+            {/* Promo callout */}
+            <div style={{ background: "#1b1b1b", borderRadius: 20, padding: "28px 28px",
+              display: "flex", flexDirection: "column", color: "#fff" }}>
+              <Glyph size={40} radius={11} />
+              <div style={{ font: "500 19px/26px Inter", margin: "16px 0 10px" }}>
+                Не знаете, какая экспертиза нужна?
+              </div>
+              <p style={{ margin: "0 0 22px", font: "400 14px/22px Inter", color: "#b4b8be" }}>
+                Поможем определить состав работ и рассчитаем стоимость для вашего объекта.
+              </p>
+              <Btn variant="light" size="sm" onClick={onCalc} style={{ marginTop: "auto", alignSelf: "flex-start" }}>
+                Рассчитать стоимость
+              </Btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>);
+
+}
+window.Header = Header;
+</script>
+<script type="text/babel">
+// Hero, Услуги (expandable), Этапы работы (slider).
+
+function HeroServiceBlock({ grp, onGo }) {
+  const [hover, setHover] = React.useState(false);
+  const crossColor = hover ? "rgba(255,255,255,.42)" : "var(--ml-border-2)";
+  return (
+    <button type="button" onClick={() => onGo(grp.key)}
+      onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      style={{
+        flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between",
+        textAlign: "left", padding: "26px 28px", borderRadius: 24, cursor: "pointer",
+        border: "1px solid " + (hover ? "#141414" : "var(--ml-border)"),
+        background: hover ? "#141414" : "var(--ml-surface-1)",
+        color: hover ? "#fff" : "#141414",
+        transition: "background .2s ease, color .2s ease, border-color .2s ease",
+        fontFamily: "Inter",
+      }}>
+      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+        <span style={{ position: "relative", width: 42, height: 42, borderRadius: 10, overflow: "hidden",
+          border: "1px solid " + crossColor }}>
+          <span style={{ position: "absolute", inset: 0, background:
+            "linear-gradient(to top right, transparent calc(50% - .6px), " + crossColor + " calc(50% - .6px), " + crossColor + " calc(50% + .6px), transparent calc(50% + .6px))" }} />
+          <span style={{ position: "absolute", inset: 0, background:
+            "linear-gradient(to bottom right, transparent calc(50% - .6px), " + crossColor + " calc(50% - .6px), " + crossColor + " calc(50% + .6px), transparent calc(50% + .6px))" }} />
+        </span>
+        <Icon name="arrowR" size={22} stroke={1.8} color={hover ? "#fff" : "#141414"} />
+      </div>
+      <div style={{ marginTop: 28 }}>
+        <h3 style={{ margin: 0, font: "500 24px/1.12 Inter", letterSpacing: "-0.01em" }}>{grp.title}</h3>
+        <span style={{ display: "block", marginTop: 8, font: "400 14px Inter",
+          color: hover ? "rgba(255,255,255,.7)" : "var(--ml-text-nav)" }}>
+          {grp.items.length} {plural(grp.items.length, ["услуга", "услуги", "услуг"])} · выбрать
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function Hero({ onCalc }) {
+  const creds = [
+    { k: "Аккредитация", v: "ПД и РИИ" },
+    { k: "Платформа", v: "ЕЦПЭ" },
+    { k: "Опыт", v: "12 лет" },
+    { k: "Заключений", v: "1 400+" },
+  ];
+  const goTo = (key) => {
+    const el = document.getElementById("dir-" + key);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 96, behavior: "smooth" });
+  };
+  return (
+    <Section id="top" style={{ paddingTop: 96 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 480px", gap: 48, alignItems: "stretch" }}>
+        {/* Left */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: 8 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 9, marginBottom: 26 }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#141414" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>
+              Негосударственная экспертиза
+            </span>
+          </div>
+          <h1 style={{ margin: 0, font: "500 54px/1.06 Inter", letterSpacing: "-0.018em", color: "#000" }}>
+            Экспертиза проектной<br />документации,<br />изысканий и смет
+          </h1>
+          <p style={{ margin: "28px 0 0", font: "300 18px/29px Inter", color: "#1b1b1b", maxWidth: 540, textWrap: "pretty" }}>
+            Помогаем получить положительное заключение, избежать ошибок в документации
+            и подготовить проект к получению разрешения на строительство.
+          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 38, flexWrap: "wrap" }}>
+            <Btn size="lg" onClick={onCalc} icon="arrowR">Рассчитать стоимость экспертизы</Btn>
+            <a href="tel:+74951234567" style={{ display: "grid", gap: 2, textDecoration: "none" }}>
+              <span style={{ font: "600 19px Inter", color: "#141414", whiteSpace: "nowrap" }}>+7 (495) 123-45-67</span>
+              <span style={{ font: "400 13px Inter", color: "var(--ml-text-nav)" }}>Консультация бесплатно</span>
+            </a>
+          </div>
+        </div>
+        {/* Right — clickable service direction blocks */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, minHeight: 440 }}>
+          {SERVICE_GROUPS.map((grp) => (
+            <HeroServiceBlock key={grp.key} grp={grp} onGo={goTo} />
+          ))}
+        </div>
+      </div>
+
+      {/* Credential strip */}
+      <div style={{ marginTop: 100, display: "grid", gridTemplateColumns: "repeat(4,1fr)",
+        border: "1px solid var(--ml-border)", borderRadius: 20, overflow: "hidden" }}>
+        {creds.map((c, i) => (
+          <div key={c.k} style={{ padding: "26px 30px", borderLeft: i ? "1px solid var(--ml-border)" : "none" }}>
+            <div style={{ font: "500 28px Inter", color: "#000", letterSpacing: "-0.01em" }}>{c.v}</div>
+            <div style={{ font: "400 14px Inter", color: "var(--ml-text-nav)", marginTop: 6 }}>{c.k}</div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function plural(n, forms) {
+  const a = Math.abs(n) % 100, b = a % 10;
+  if (a > 10 && a < 20) return forms[2];
+  if (b > 1 && b < 5) return forms[1];
+  if (b === 1) return forms[0];
+  return forms[2];
+}
+
+function ServiceChip({ label, href, variant = "default", icon = "external", onClick }) {
+  const [hover, setHover] = React.useState(false);
+  const dark = variant === "more";
+  const bg = dark ? (hover ? "#2a2a2a" : "#141414") : (hover ? "#141414" : "#fff");
+  const fg = dark ? "#fff" : (hover ? "#fff" : "var(--ml-text-2)");
+  const Tag = onClick ? "button" : "a";
+  return (
+    <Tag href={href} onClick={onClick}
+      onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      style={{
+        display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 17px", borderRadius: 50,
+        border: "1px solid " + (dark ? "transparent" : "var(--ml-border-2)"),
+        background: bg, color: fg, font: "500 14px Inter", textDecoration: "none", cursor: "pointer",
+        whiteSpace: "nowrap", transition: "background .16s ease, color .16s ease, border-color .16s ease",
+      }}>
+      {label}
+      <Icon name={icon} size={14} stroke={1.9} color={dark ? "#fff" : (hover ? "#fff" : "var(--ml-text-muted)")} />
+    </Tag>
+  );
+}
+
+function ServiceDirectionCard({ grp }) {
+  const [expanded, setExpanded] = React.useState(false);
+  const limit = 6;
+  const shown = expanded ? grp.items : grp.items.slice(0, limit);
+  const rest = grp.items.length - limit;
+  return (
+    <div id={"dir-" + grp.key} style={{ scrollMarginTop: 96, background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", borderRadius: 30,
+      padding: "42px 44px", display: "flex", flexDirection: "column", height: "100%", minHeight: 540, boxSizing: "border-box" }}>
+      {/* head */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 30 }}>
+        <Glyph size={56} radius={14} />
+        <div>
+          <h3 style={{ margin: 0, font: "500 28px/1.1 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)" }}>{grp.title}</h3>
+          <span style={{ font: "400 14px Inter", color: "var(--ml-text-nav)" }}>
+            {grp.items.length} {plural(grp.items.length, ["услуга", "услуги", "услуг"])}
+          </span>
+        </div>
+      </div>
+
+      {/* chips */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 30 }}>
+        {shown.map((it) => <ServiceChip key={it.slug} label={it.n} href={RT.detail(it.slug)} />)}
+        {rest > 0 && !expanded && (
+          <ServiceChip variant="more" icon="plus" onClick={() => setExpanded(true)}
+            label={"ещё " + rest + " " + plural(rest, ["услуга", "услуги", "услуг"])} />
+        )}
+        {rest > 0 && expanded && (
+          <ServiceChip variant="more" icon="minus" onClick={() => setExpanded(false)} label="Свернуть" />
+        )}
+      </div>
+
+      {/* footer */}
+      <a href={RT.services(grp.key)} style={{ marginTop: "auto", paddingTop: 30, borderTop: "1px solid var(--ml-border)",
+        display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "var(--ml-ink-900)" }}
+        onMouseEnter={(e) => { const c = e.currentTarget.querySelector('[data-arrow]'); if (c) c.style.background = "#141414"; }}
+        onMouseLeave={(e) => { const c = e.currentTarget.querySelector('[data-arrow]'); if (c) c.style.background = "#fff"; }}>
+        <span data-arrow style={{ width: 46, height: 46, borderRadius: "50%", border: "1px solid var(--ml-border-2)",
+          background: "#fff", display: "grid", placeItems: "center", flex: "none", transition: "background .18s ease" }}>
+          <Icon name="arrowR" size={20} stroke={1.8} color="#141414" />
+        </span>
+        <span style={{ font: "500 15px Inter" }}>Смотреть все услуги направления</span>
+      </a>
+    </div>
+  );
+}
+
+function Services({ onCalc }) {
+  return (
+    <Section id="services" style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num="01" eyebrow="Услуги"
+        title="Экспертиза по двум направлениям"
+        sub="Проводим экспертизу проектной документации, инженерных изысканий и сметной документации, а также сопровождаем проект на всех этапах."
+        action="Все услуги" onAction={() => { location.href = RT.ALL; }} actionIcon="arrowR" />
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, alignItems: "stretch" }}>
+        {SERVICE_GROUPS.map((grp) => <ServiceDirectionCard key={grp.key} grp={grp} />)}
+      </div>
+    </Section>
+  );
+}
+
+function Stages({ onCalc }) {
+  return (
+    <Section id="stages" style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ marginBottom: 44, maxWidth: 720 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+          <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)" }}>02</span>
+          <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />
+          <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>Процесс</span>
+        </div>
+        <h2 style={{ margin: 0, font: "500 34px/1.12 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)" }}>Как проходит экспертиза</h2>
+        <p style={{ margin: "16px 0 0", font: "400 16px/27px Inter", color: "var(--ml-text-slate)", maxWidth: 560 }}>
+          Понятный процесс от консультации до получения заключения.
+        </p>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+        {STAGES.map((s) => (
+          <div key={s.n} style={{ background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", borderRadius: 20, padding: "32px 30px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26 }}>
+              <span style={{ font: "500 46px/1 Inter", color: "var(--ml-wire-2)", letterSpacing: "-0.02em" }}>{s.n}</span>
+              <Glyph size={52} radius={13} />
+            </div>
+            <h4 style={{ margin: "0 0 10px", font: "500 20px/26px Inter", color: "var(--ml-ink-900)" }}>{s.t}</h4>
+            <p style={{ margin: 0, font: "400 14px/23px Inter", color: "var(--ml-text-slate)" }}>{s.d}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 36 }}>
+        <Btn onClick={onCalc} icon="arrowR">Получить консультацию</Btn>
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { Hero, Services, Stages });
+
+</script>
+<script type="text/babel">
+// О компании, Почему нам доверяют (dark), Эксперты.
+
+function About({ onCalc }) {
+  return (
+    <Section id="about" style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "560px 1fr", gap: 64, alignItems: "center" }}>
+        <Placeholder style={{ minHeight: 480, borderRadius: 30 }} radius={30} icon="building" label="Офис компании" />
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)" }}>03</span>
+            <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>О компании</span>
+          </div>
+          <h2 style={{ margin: 0, font: "500 36px/1.14 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)", textWrap: "balance" }}>
+            Аккредитованная экспертная организация полного цикла
+          </h2>
+          <p style={{ margin: "22px 0 0", font: "400 16px/28px Inter", color: "var(--ml-text-slate)", maxWidth: 560 }}>
+            РАМ-Т.В. проводит негосударственную экспертизу проектной документации и результатов
+            инженерных изысканий в одной компании, работает на платформе ЕЦПЭ и сопровождает
+            проект вплоть до получения разрешения на строительство.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, margin: "34px 0 36px" }}>
+            {ABOUT_POINTS.map((p) => (
+              <div key={p.t} style={{ display: "flex", gap: 14 }}>
+                <Glyph size={44} radius={11} />
+                <div>
+                  <div style={{ font: "500 15px/20px Inter", color: "var(--ml-ink-900)", marginBottom: 4 }}>{p.t}</div>
+                  <div style={{ font: "400 13px/20px Inter", color: "var(--ml-text-slate)" }}>{p.d}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Btn onClick={onCalc} icon="arrowR">Обсудить ваш проект</Btn>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Advantages() {
+  return (
+    <section id="advantages" style={{ marginTop: "var(--rt-gap)", background: "#141414", color: "#fff", paddingBlock: 96 }}>
+      <div style={{ maxWidth: 1600, margin: "0 auto", padding: "0 40px" }}>
+        <div style={{ maxWidth: 720, marginBottom: 56 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <span style={{ font: "500 13px Inter", color: "#7c828b" }}>04</span>
+            <span style={{ width: 26, height: 1, background: "#3a3a3a" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "#9aa0a8" }}>Преимущества</span>
+          </div>
+          <h2 style={{ margin: 0, font: "500 36px/1.12 Inter", letterSpacing: "-0.01em", color: "#fff", textWrap: "balance" }}>
+            Почему нам доверяют
+          </h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0,
+          borderTop: "1px solid #2d2d2d", borderLeft: "1px solid #2d2d2d" }}>
+          {ADVANTAGES.map((a) => (
+            <div key={a.n} style={{ padding: "38px 36px", borderRight: "1px solid #2d2d2d", borderBottom: "1px solid #2d2d2d" }}>
+              <div style={{ font: "500 15px Inter", color: "#7c828b", marginBottom: 22, letterSpacing: "0.04em" }}>{a.n}</div>
+              <h4 style={{ margin: "0 0 12px", font: "500 21px/27px Inter", color: "#fff" }}>{a.t}</h4>
+              <p style={{ margin: 0, font: "400 14px/23px Inter", color: "#a9adb4" }}>{a.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Experts({ num = "05", eyebrow = "Команда", title = "Наши эксперты", sub = "Специалисты с профильной аттестацией и практическим опытом.",
+  data, action = "Все специалисты", actionHref = RT.EXPERTS, slider }) {
+  const isSlider = slider !== undefined ? slider : action !== null;
+  const items = data || (isSlider ? EXPERTS : EXPERTS.slice(0, 4));
+  const onAction = actionHref ? () => { location.href = actionHref; } : undefined;
+
+  const Card = ({ e }) => (
+    <div style={{ height: "100%", boxSizing: "border-box", background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)",
+      borderRadius: 20, padding: 22 }}>
+      <Placeholder style={{ width: "100%", aspectRatio: "1/1", marginBottom: 20 }} radius={14} icon="users" />
+      <h4 style={{ margin: "0 0 6px", font: "500 19px Inter", color: "var(--ml-ink-900)" }}>{e.fio}</h4>
+      <p style={{ margin: "0 0 16px", font: "400 13px/20px Inter", color: "var(--ml-text-slate)", minHeight: 40 }}>{e.spec}</p>
+      <div style={{ display: "inline-flex", alignItems: "center", gap: 7, paddingTop: 14, borderTop: "1px solid var(--ml-border)",
+        width: "100%", font: "500 13px Inter", color: "var(--ml-text-nav)" }}>
+        {e.exp}
+      </div>
+    </div>
+  );
+
+  if (isSlider) {
+    return (
+      <CardSlider id="experts" num={num} eyebrow={eyebrow} title={title} sub={sub} perView={4} gap={20}
+        action={action} actionIcon="arrowR" onAction={onAction}>
+        {items.map((e) => <Card key={e.fio} e={e} />)}
+      </CardSlider>
+    );
+  }
+
+  return (
+    <Section id="experts" style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow={eyebrow}
+        title={title}
+        sub={sub}
+        action={action} actionIcon="arrowR" onAction={onAction} />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
+        {items.map((e) => <Card key={e.fio} e={e} />)}
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { About, Advantages, Experts });
+
+</script>
+<script type="text/babel">
+// Лид-форма, Документы, Онлайн-сервисы.
+
+function LeadForm() {
+  const [sent, setSent] = React.useState(false);
+  const [files, setFiles] = React.useState([]);
+  const inputRef = React.useRef(null);
+  const onFiles = (e) => {
+    const f = Array.from(e.target.files || []).map((x) => x.name);
+    setFiles((prev) => [...prev, ...f].slice(0, 6));
+    e.target.value = "";
+  };
+  const removeFile = (i) => setFiles((prev) => prev.filter((_, idx) => idx !== i));
+  const ta = { ...fieldStyle, height: 120, padding: "16px 22px", borderRadius: 24, resize: "none", fontFamily: "Inter" };
+  return (
+    <Section id="lead" style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ background: "#f0f0f0", borderRadius: 30, padding: "60px 60px",
+        display: "grid", gridTemplateColumns: "440px 1fr", gap: 64 }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)" }}>06</span>
+            <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>Заявка</span>
+          </div>
+          <h2 style={{ margin: 0, font: "500 40px/1.12 Inter", letterSpacing: "-0.01em", color: "#000", textWrap: "balance" }}>
+            Оставить заявку
+          </h2>
+          <p style={{ margin: "20px 0 32px", font: "400 16px/28px Inter", color: "var(--ml-text-slate)", maxWidth: 380 }}>
+            Получите консультацию и предварительный расчёт стоимости. Можно приложить документацию
+            по объекту — так расчёт будет точнее.
+          </p>
+          <div style={{ display: "grid", gap: 16 }}>
+            {[["clock", "Ответим в течение рабочего дня"], ["shield", "Конфиденциальность гарантируем"], ["support", "Консультация бесплатна"]].map(([ic, tx]) => (
+              <div key={tx} style={{ display: "flex", alignItems: "center", gap: 12, font: "400 15px Inter", color: "var(--ml-text-2)" }}>
+                <Glyph size={24} radius={6} /> {tx}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ background: "#fff", borderRadius: 24, padding: "40px 40px" }}>
+          {sent ? (
+            <div style={{ display: "grid", placeItems: "center", height: "100%", minHeight: 360, textAlign: "center", gap: 8 }}>
+              <span style={{ width: 64, height: 64, borderRadius: "50%", background: "#1b1b1b", display: "grid", placeItems: "center", marginBottom: 8 }}>
+                <Icon name="check" size={28} stroke={2.4} color="#fff" />
+              </span>
+              <h3 style={{ margin: 0, font: "500 26px Inter", color: "#000" }}>Заявка отправлена</h3>
+              <p style={{ margin: 0, font: "400 15px/24px Inter", color: "var(--ml-text-slate)", maxWidth: 320 }}>
+                Эксперт свяжется с вами в течение рабочего дня и подготовит предварительный расчёт.
+              </p>
+            </div>
+          ) : (
+            <div style={{ display: "grid", gap: 14 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <input style={fieldStyle} placeholder="Имя" />
+                <input style={fieldStyle} placeholder="Телефон" />
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <input style={fieldStyle} placeholder="E-mail" />
+                <input style={fieldStyle} placeholder="Объект" />
+              </div>
+              <textarea style={ta} placeholder="Сообщение" />
+
+              {/* file upload */}
+              <div onClick={() => inputRef.current && inputRef.current.click()}
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16,
+                  border: "1px dashed var(--ml-border-input)", borderRadius: 18, padding: "16px 22px", cursor: "pointer",
+                  background: "var(--ml-surface-1)" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 12, font: "400 14px Inter", color: "var(--ml-text-2)" }}>
+                  <Icon name="upload" size={20} stroke={1.6} color="#141414" />
+                  {files.length ? `${files.length} файл(ов) выбрано` : "Перетащите файлы или выберите вручную"}
+                </span>
+                <Btn size="sm" variant="ghost">Прикрепить файл</Btn>
+              </div>
+              <input ref={inputRef} type="file" multiple onChange={onFiles} style={{ display: "none" }} />
+              {files.length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {files.map((f, i) => (
+                    <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 7, padding: "6px 8px 6px 12px",
+                      borderRadius: 6, background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", font: "400 13px Inter", color: "var(--ml-text-2)" }}>
+                      <Icon name="pdf" size={14} stroke={1.6} /> {f}
+                      <button type="button" onClick={() => removeFile(i)} aria-label={"Удалить файл " + f}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = "var(--ml-border)"; e.currentTarget.style.color = "#141414"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--ml-text-muted)"; }}
+                        style={{ display: "grid", placeItems: "center", width: 20, height: 20, marginLeft: 2, padding: 0,
+                          border: "none", borderRadius: 5, background: "transparent", color: "var(--ml-text-muted)",
+                          cursor: "pointer", transition: "background .14s, color .14s" }}>
+                        <Icon name="x" size={13} stroke={2} />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <Btn onClick={() => setSent(true)} style={{ width: "100%", padding: 17 }} icon="arrowR">Отправить</Btn>
+              <p style={{ margin: "2px 0 0", font: "400 12px/18px Inter", color: "var(--ml-text-muted)", textAlign: "center" }}>
+                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности и обработкой персональных данных.
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Documents({ num = "07", data = DOCUMENTS.slice(0, 4), action = "Все документы", actionHref = RT.DOCS,
+  title = "Документы и аккредитация", sub = "Официальные документы компании." }) {
+  return (
+    <Section id="documents" style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Документы"
+        title={title}
+        sub={sub}
+        action={action} actionIcon="arrowR" onAction={actionHref ? () => { location.href = actionHref; } : undefined} />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
+        {data.map((d) => (
+          <div key={d.t} style={{ background: "#fff", border: "1px solid var(--ml-border)", borderRadius: 20,
+            padding: 22, display: "flex", flexDirection: "column" }}>
+            <Placeholder style={{ width: "100%", aspectRatio: "3/4", marginBottom: 20 }} radius={12} icon="pdf" label="PDF" />
+            <h4 style={{ margin: "0 0 8px", font: "500 17px/23px Inter", color: "var(--ml-ink-900)" }}>{d.t}</h4>
+            <p style={{ margin: "0 0 20px", font: "400 13px/21px Inter", color: "var(--ml-text-slate)" }}>{d.d}</p>
+            <Btn size="sm" variant="ghost" icon="external" style={{ marginTop: "auto", alignSelf: "flex-start" }}>Открыть PDF</Btn>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function OnlineServices({ num = "08", action, actionHref, title = "Онлайн-сервисы", sub = "Полезные инструменты для подготовки документации." }) {
+  return (
+    <Section id="online" style={{ paddingTop: "var(--rt-gap)" }}>
+      <SectionHead num={num} eyebrow="Сервисы"
+        title={title}
+        sub={sub}
+        action={action} actionIcon="arrowR" onAction={actionHref ? () => { location.href = actionHref; } : undefined} />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 20 }}>
+        {ONLINE_SERVICES.map((s) => (
+          <div key={s.t} style={{ background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)",
+            borderRadius: 20, padding: 30, display: "flex", flexDirection: "column" }}>
+            <Glyph size={54} radius={14} style={{ marginBottom: 24 }} />
+            <h4 style={{ margin: "0 0 10px", font: "500 20px Inter", color: "var(--ml-ink-900)" }}>{s.t}</h4>
+            <p style={{ margin: "0 0 24px", font: "400 14px/22px Inter", color: "var(--ml-text-slate)" }}>{s.d}</p>
+            <a href={s.url || "#"} style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, cursor: "pointer",
+              font: "500 14px Inter", color: "#141414", textDecoration: "none" }}>
+              {s.cta} <Icon name="external" size={16} stroke={1.8} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { LeadForm, Documents, OnlineServices });
+
+</script>
+<script type="text/babel">
+// Отзывы (carousel) и Контакты.
+
+function Stars({ n }) {
+  return (
+    <span style={{ display: "inline-flex", gap: 4 }}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Icon key={i} name="star" size={18} stroke={1}
+          color={i < n ? "#141414" : "var(--ml-border-2)"}
+          style={{ fill: i < n ? "#141414" : "none" }} />
+      ))}
+    </span>
+  );
+}
+
+function ReviewCard({ r }) {
+  return (
+    <div style={{ background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", borderRadius: 30, padding: "38px 40px",
+      display: "flex", flexDirection: "column", height: "100%", boxSizing: "border-box" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <Placeholder style={{ width: 56, height: 56 }} radius={50} />
+          <div>
+            <div style={{ font: "500 18px Inter", color: "var(--ml-ink-900)" }}>{r.n}</div>
+            <div style={{ font: "400 13px Inter", color: "var(--ml-text-nav)", marginTop: 3 }}>{r.role}</div>
+          </div>
+        </div>
+        <Stars n={r.r} />
+      </div>
+      <p style={{ margin: "0 0 26px", font: "400 15px/26px Inter", color: "var(--ml-text-slate)" }}>{r.t}</p>
+      <div style={{ marginTop: "auto", display: "flex", alignItems: "center", gap: 10, paddingTop: 22, borderTop: "1px solid var(--ml-border)" }}>
+        <Chip>{r.d}</Chip><Chip>{r.src}</Chip>
+      </div>
+    </div>
+  );
+}
+
+function Reviews({ onCalc, num = "09", title = "Отзывы клиентов", sub = "Мнение заказчиков о нашей работе.", layout = "carousel" }) {
+  const [idx, setIdx] = React.useState(0);
+  const perView = 2;
+  const maxIdx = REVIEWS.length - perView;
+  const clamp = (v) => Math.max(0, Math.min(maxIdx, v));
+
+  if (layout === "grid") {
+    return (
+      <Section id="reviews" style={{ paddingTop: "var(--rt-gap)" }}>
+        <SectionHead num={num} eyebrow="Отзывы" title={title} sub={sub} />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+          {REVIEWS.map((r) => <ReviewCard key={r.n} r={r} />)}
+        </div>
+      </Section>
+    );
+  }
+
+  return (
+    <Section id="reviews" style={{ paddingTop: "var(--rt-gap)" }}>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 32, marginBottom: 44, flexWrap: "wrap" }}>
+        <div style={{ maxWidth: 720 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <span style={{ font: "500 13px Inter", color: "var(--ml-text-muted)" }}>{num}</span>
+            <span style={{ width: 26, height: 1, background: "var(--ml-border-2)" }} />
+            <span style={{ font: "500 12px Inter", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>Отзывы</span>
+          </div>
+          <h2 style={{ margin: 0, font: "500 34px/1.12 Inter", letterSpacing: "-0.01em", color: "var(--ml-ink-900)" }}>{title}</h2>
+          <p style={{ margin: "16px 0 0", font: "400 16px/27px Inter", color: "var(--ml-text-slate)" }}>{sub}</p>
+        </div>
+        <div style={{ display: "flex", gap: 12 }}>
+          <SliderArrow dir="left" disabled={idx === 0} onClick={() => setIdx((v) => clamp(v - 1))} />
+          <SliderArrow dir="right" disabled={idx >= maxIdx} onClick={() => setIdx((v) => clamp(v + 1))} />
+        </div>
+      </div>
+
+      <div style={{ overflow: "hidden" }}>
+        <div style={{ display: "flex", gap: 20, transition: "transform .5s cubic-bezier(.4,0,.1,1)",
+          transform: `translateX(calc(${-idx} * (100% + 20px) / ${perView}))` }}>
+          {REVIEWS.map((r) => (
+            <div key={r.n} style={{ flex: `0 0 calc((100% - ${20 * (perView - 1)}px) / ${perView})` }}>
+              <ReviewCard r={r} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 32, gap: 24, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 7 }}>
+          {Array.from({ length: maxIdx + 1 }).map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)} style={{
+              width: i === idx ? 30 : 9, height: 9, borderRadius: 50, border: "none", cursor: "pointer",
+              background: i === idx ? "#141414" : "var(--ml-border-2)", transition: "all .25s ease", padding: 0 }} />
+          ))}
+        </div>
+        <Btn variant="ghost" icon="arrowR" onClick={() => { location.href = RT.REVIEWS; }}>Больше отзывов</Btn>
+      </div>
+    </Section>
+  );
+}
+
+function Contacts({ onCalc, showHead = true, num = "10" }) {
+  const rows = [
+    { icon: "phone", k: "Телефоны", v: "+7 (495) 123-45-67" },
+    { icon: "phone", k: "Отдел экспертизы", v: "+7 (495) 123-45-68" },
+    { icon: "mail", k: "E-mail", v: "info@ram-tv.ru" },
+    { icon: "telegram", k: "Мессенджеры", v: "Telegram · WhatsApp" },
+    { icon: "pin", k: "Адрес офиса", v: "г. Москва, ул. Проектная, 12, офис 410" },
+    { icon: "clock", k: "Режим работы", v: "Пн–Пт, 9:00–18:00" },
+  ];
+  const reqs = [
+    ["Полное наименование", "ООО «РАМ-Т.В.»"],
+    ["ИНН / КПП", "7701234567 / 770101001"],
+    ["ОГРН", "1157700012345"],
+    ["Расчётный счёт", "40702 810 4 0000 0001234"],
+  ];
+  return (
+    <Section id="contacts" style={{ paddingTop: "var(--rt-gap)" }}>
+      {showHead && <SectionHead num={num} eyebrow="Контакты" title="Контакты" />}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        {/* Left: contact rows + requisites */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ background: "var(--ml-surface-1)", border: "1px solid var(--ml-border)", borderRadius: 24, padding: "14px 32px" }}>
+            {rows.map((r, i) => (
+              <div key={r.k} style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 0",
+                borderTop: i ? "1px solid var(--ml-border)" : "none" }}>
+                <Glyph size={44} radius={11} />
+                <div>
+                  <div style={{ font: "400 13px Inter", color: "var(--ml-text-nav)", marginBottom: 3 }}>{r.k}</div>
+                  <div style={{ font: "500 16px Inter", color: "var(--ml-ink-900)", whiteSpace: "nowrap" }}>{r.v}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ background: "#141414", borderRadius: 24, padding: "30px 32px", color: "#fff" }}>
+            <div style={{ font: "500 16px Inter", marginBottom: 20 }}>Реквизиты юридического лица</div>
+            <div style={{ display: "grid", gap: 0 }}>
+              {reqs.map(([k, v], i) => (
+                <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: 16, padding: "12px 0",
+                  borderTop: i ? "1px solid #2d2d2d" : "none" }}>
+                  <span style={{ font: "400 13px Inter", color: "#9aa0a8" }}>{k}</span>
+                  <span style={{ font: "400 14px Inter", color: "#e9ebed", textAlign: "right" }}>{v}</span>
+                </div>
+              ))}
+            </div>
+            <Btn variant="light" onClick={onCalc} style={{ marginTop: 26, width: "100%" }}>Оставить заявку</Btn>
+          </div>
+        </div>
+        {/* Right: map */}
+        <Placeholder style={{ minHeight: 560, borderRadius: 24 }} radius={24} icon="pin" label="Интерактивная карта" />
+      </div>
+    </Section>
+  );
+}
+
+Object.assign(window, { Reviews, Contacts });
+
+</script>
+<script type="text/babel">
+// Dark site footer.
+function Footer({ onCalc, onNav, home = false }) {
+  const PAGE_OF = { top: RT.HOME, about: RT.ABOUT, experts: RT.EXPERTS, documents: RT.DOCS, online: RT.ONLINE, reviews: RT.REVIEWS, contacts: RT.CONTACTS };
+  const cols = [
+  { head: "Навигация", links: [["Главная", "top"], ["О компании", "about"], ["Эксперты", "experts"], ["Документы", "documents"], ["Онлайн-сервисы", "online"], ["Отзывы", "reviews"], ["Контакты", "contacts"]] },
+  { head: "Услуги", svc: true, links: SERVICE_GROUPS[0].items.slice(0, 5).concat(SERVICE_GROUPS[1].items.slice(0, 3)) }];
+
+  const contacts = [
+  { v: "+7 (495) 123-45-67" },
+  { v: "info@ram-tv.ru" },
+  { v: "г. Владивосток, ул. Проектная, 12" },
+  { v: "Пн–Пт, 9:00–18:00" }];
+
+  const reqs = [
+  ["Наименование", "ООО «РАМ-Т.В.»"],
+  ["ИНН / КПП", "7701234567 / 770101001"],
+  ["ОГРН", "1157700012345"],
+  ["Р/счёт", "40702 810 4 0000 0001234"],
+  ["Юр. адрес", "г. Владивосток, ул. Проектная, 12"]];
+
+  return (
+    <footer style={{ background: "#141414", color: "#fff", marginTop: 120 }}>
+      <div style={{ maxWidth: 1600, margin: "0 auto", padding: "76px 40px 0" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "320px 1fr 1fr 300px", gap: 48 }}>
+          {/* Brand */}
+          <div>
+            <Logo light />
+            <p style={{ margin: "26px 0 0", font: "400 14px/23px Inter", color: "#9aa0a8", maxWidth: 280 }}>
+              Негосударственная экспертиза проектной документации, инженерных изысканий и смет.
+            </p>
+          </div>
+          {/* Link columns */}
+          {cols.map((col) =>
+          <div key={col.head}>
+              <div style={{ font: "500 15px Inter", color: "#fff", marginBottom: 22 }}>{col.head}</div>
+              <div style={{ display: "grid", gap: 13 }}>
+                {col.svc ?
+              col.links.map((it) =>
+              <a key={it.slug} href={RT.detail(it.slug)} style={{ font: "400 14px/1.3 Inter", color: "#9aa0a8", cursor: "pointer", textDecoration: "none", transition: "color .12s" }}
+              onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#9aa0a8"}>{it.n}</a>
+              ) :
+              col.links.map(([l, id]) =>
+              <a key={l} href={PAGE_OF[id] || RT.HOME}
+              style={{ font: "400 14px/1.3 Inter", color: "#9aa0a8", cursor: "pointer", textDecoration: "none", transition: "color .12s" }}
+              onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
+              onMouseLeave={(e) => e.currentTarget.style.color = "#9aa0a8"}>{l}</a>
+              )}
+              </div>
+            </div>
+          )}
+          {/* Contacts */}
+          <div>
+            <div style={{ font: "500 15px Inter", color: "#fff", marginBottom: 22 }}>Контакты</div>
+            <div style={{ display: "grid", gap: 16, marginBottom: 26 }}>
+              {contacts.map((c) =>
+              <div key={c.v} style={{ font: "400 14px/1.4 Inter", color: "#cfd3d8" }}>{c.v}</div>
+              )}
+            </div>
+            <Btn variant="light" size="sm" onClick={onCalc}>Рассчитать стоимость</Btn>
+          </div>
+        </div>
+        <div style={{ height: 1, background: "#2d2d2d", margin: "60px 0 0" }} />
+        {/* Legal requisites */}
+        <div style={{ padding: "30px 0 8px" }}>
+          <div style={{ font: "500 13px Inter", letterSpacing: "0.14em", textTransform: "uppercase", color: "#7c828b", marginBottom: 18 }}>Реквизиты юридического лица</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 24 }}>
+            {reqs.map(([k, v]) =>
+            <div key={k}>
+                <div style={{ font: "400 12px Inter", color: "#7c828b", marginBottom: 6 }}>{k}</div>
+                <div style={{ font: "400 14px/1.4 Inter", color: "#e9ebed" }}>{v}</div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div style={{ background: "#0f0f0f", marginTop: 40 }}>
+        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "22px 40px",
+          display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", font: "400 13px Inter", color: "#8a8f96" }}>
+          <span>© 2026 ООО «РАМ-Т.В.». Все права защищены.</span>
+          <a href={RT.TERMS} style={{ color: "#8a8f96", cursor: "pointer", textDecoration: "none", transition: "color .12s" }}
+            onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
+            onMouseLeave={(e) => e.currentTarget.style.color = "#8a8f96"}>Пользовательское соглашение</a>
+          <a href={RT.PRIVACY} style={{ color: "#8a8f96", cursor: "pointer", textDecoration: "none", transition: "color .12s" }}
+            onMouseEnter={(e) => e.currentTarget.style.color = "#fff"}
+            onMouseLeave={(e) => e.currentTarget.style.color = "#8a8f96"}>Политика конфиденциальности</a>
+          <span style={{ marginLeft: "auto" }}>Разработано в «<a style={{ color: "#cfd3d8", cursor: "pointer", textDecoration: "none" }}>Digital-агентстве House</a>»</span>
+        </div>
+      </div>
+    </footer>);
+
+}
+window.Footer = Footer;
+</script>
+<script type="text/babel">
+// «Рассчитать стоимость» modal.
+function CalcModal({ open, onClose }) {
+  const [sent, setSent] = React.useState(false);
+  const [svc, setSvc] = React.useState("");
+  const [open2, setOpen2] = React.useState(false);
+  React.useEffect(() => { if (open) { setSent(false); setSvc(""); setOpen2(false); } }, [open]);
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    if (open) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
+  if (!open) return null;
+
+  const services = [
+    "Экспертиза проектной документации",
+    "Экспертиза результатов инженерных изысканий",
+    "Экспертиза смет",
+  ];
+  const ta = { ...fieldStyle, height: 96, padding: "15px 22px", borderRadius: 22, resize: "none", fontFamily: "Inter" };
+
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 100,
+      background: "rgba(20,20,20,0.45)", backdropFilter: "blur(3px)", display: "grid", placeItems: "center", padding: 24,
+      animation: "ramFade .2s ease" }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ width: 600, maxWidth: "100%", maxHeight: "92vh", overflowY: "auto",
+        background: "#fff", borderRadius: 30, padding: "44px 48px", position: "relative", animation: "ramRise .28s cubic-bezier(.2,.7,.2,1)" }}>
+        <button onClick={onClose} style={{ position: "absolute", top: 24, right: 24, width: 38, height: 38,
+          borderRadius: "50%", border: "1px solid var(--ml-border-2)", background: "#fff", cursor: "pointer",
+          display: "grid", placeItems: "center", color: "#79828d" }}>
+          <Icon name="x" size={18} stroke={1.8} />
+        </button>
+
+        {sent ? (
+          <div style={{ padding: "28px 0", textAlign: "center", display: "grid", placeItems: "center", gap: 10 }}>
+            <span style={{ width: 68, height: 68, borderRadius: "50%", background: "#1b1b1b", display: "grid", placeItems: "center", marginBottom: 8 }}>
+              <Icon name="check" size={30} stroke={2.4} color="#fff" />
+            </span>
+            <h3 style={{ margin: 0, font: "500 28px Inter", color: "#000" }}>Заявка принята</h3>
+            <p style={{ margin: 0, font: "400 15px/24px Inter", color: "var(--ml-text-slate)", maxWidth: 360 }}>
+              Эксперт рассчитает стоимость и свяжется с вами в течение рабочего дня.
+            </p>
+            <Btn onClick={onClose} style={{ marginTop: 14 }}>Хорошо</Btn>
+          </div>
+        ) : (
+          <React.Fragment>
+            <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 14 }}>
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#141414" }} />
+              <span style={{ font: "500 12px Inter", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--ml-text-nav)" }}>Расчёт стоимости</span>
+            </div>
+            <h3 style={{ margin: "0 0 8px", font: "500 30px Inter", color: "#000", letterSpacing: "-0.01em" }}>Рассчитать стоимость</h3>
+            <p style={{ margin: "0 0 26px", font: "400 15px/24px Inter", color: "var(--ml-text-slate)" }}>
+              Заполните форму — подготовим предварительный расчёт под ваш объект.
+            </p>
+            <div style={{ display: "grid", gap: 14 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <input style={fieldStyle} placeholder="Имя" />
+                <input style={fieldStyle} placeholder="Телефон" />
+              </div>
+              <input style={fieldStyle} placeholder="E-mail" />
+
+              {/* Service select */}
+              <div style={{ position: "relative" }}>
+                <button onClick={() => setOpen2((v) => !v)} style={{ ...fieldStyle, display: "flex", alignItems: "center",
+                  justifyContent: "space-between", cursor: "pointer", color: svc ? "#141414" : "var(--ml-text-faint)", textAlign: "left" }}>
+                  {svc || "Вид услуги"}
+                  <Icon name="chevron" size={16} stroke={2} color="#79828d" style={{ transform: open2 ? "rotate(90deg)" : "rotate(90deg)" }} />
+                </button>
+                {open2 && (
+                  <div style={{ position: "absolute", top: "calc(100% + 8px)", left: 0, right: 0, zIndex: 5,
+                    background: "#fff", border: "1px solid var(--ml-border-2)", borderRadius: 18, padding: 8,
+                    boxShadow: "0 18px 40px rgba(20,24,33,0.12)" }}>
+                    {services.map((s) => (
+                      <a key={s} onClick={() => { setSvc(s); setOpen2(false); }} style={{ display: "block", padding: "12px 16px",
+                        borderRadius: 10, cursor: "pointer", font: "400 14px Inter", color: "var(--ml-text-2)", transition: "background .12s" }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = "var(--ml-surface-1)"}
+                        onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}>{s}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <input style={fieldStyle} placeholder="Объект" />
+              <textarea style={ta} placeholder="Сообщение" />
+              <Btn onClick={() => setSent(true)} style={{ width: "100%", padding: 17 }} icon="arrowR">Рассчитать</Btn>
+              <p style={{ margin: "2px 0 0", font: "400 12px/18px Inter", color: "var(--ml-text-muted)", textAlign: "center" }}>
+                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности и обработкой персональных данных.
+              </p>
+            </div>
+          </React.Fragment>
+        )}
+      </div>
+    </div>
+  );
+}
+window.CalcModal = CalcModal;
+
+</script>
+<script type="text/babel">
+  function Phone() {
+    return (
+      <a href="tel:+74951234567" style={{ display: "grid", gap: 2, textDecoration: "none" }}>
+        <span style={{ font: "600 19px Inter", color: "#141414", whiteSpace: "nowrap" }}>+7 (495) 123-45-67</span>
+        <span style={{ font: "400 13px Inter", color: "var(--ml-text-nav)" }}>Консультация бесплатно</span>
+      </a>
+    );
+  }
+  function App() {
+    const [calc, setCalc] = React.useState(false);
+    const openCalc = () => setCalc(true);
+    return (
+      <div>
+        <Header onCalc={openCalc} />
+        <main>
+          <PageHero
+            eyebrow="О компании"
+            crumbs={[{ label: "Главная", href: RT.HOME }, { label: "О компании" }]}
+            title="Аккредитованная экспертиза полного цикла"
+            lead="РАМ-ТВ — негосударственная экспертная организация. Проводим экспертизу проектной документации, результатов инженерных изысканий и сметной документации, работаем на платформе ЕЦПЭ и сопровождаем проект вплоть до получения разрешения на строительство."
+            visualIcon="building" visualLabel="Офис компании"
+            actions={<React.Fragment><Btn size="lg" onClick={openCalc} icon="arrowR">Рассчитать стоимость</Btn><Phone /></React.Fragment>} />
+          <Advantages />
+          <StatsBand />
+          <Experts />
+          <LicenseBlock num="05" />
+          <CtaBand onCalc={openCalc} title="Обсудим ваш проект?" text="Расскажите об объекте — подберём оптимальный маршрут экспертизы и рассчитаем стоимость." />
+        </main>
+        <Footer onCalc={openCalc} />
+        <CalcModal open={calc} onClose={() => setCalc(false)} />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
